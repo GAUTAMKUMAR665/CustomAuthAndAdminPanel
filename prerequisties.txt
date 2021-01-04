@@ -1,0 +1,25 @@
+composer require tymon/jwt-auth:dev-develop --prefer-source
+
+Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
+'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class, 
+'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+php artisan jwt:secret
+
+composer require twilio/sdk 
+
+TWILIO_SID=ACf7a2240666aa8540e213d9f4436fa261
+TWILIO_AUTH_TOKEN=e02651b32605a415e6ff922471b348c5
+TWILIO_VERIFY_SID=VA8948689c1bdd556fc3ba3d407ca926b6
+
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/GAUTAMKUMAR665/CustomAuthAndAdminPanel.git
+git push -u origin main
+                
