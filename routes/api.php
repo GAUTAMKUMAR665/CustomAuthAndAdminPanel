@@ -25,3 +25,14 @@ Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'v
 Route::group(['middleware'=>'jwt.auth'],function(){
     Route::post('jwttoken',[App\Http\Controllers\AuthenticationController::class,'jwtdecode']);
 });
+
+
+Route::get('getcsv',[App\Http\Controllers\AdminController::class,'export']);
+Route::post('postcsv',[App\Http\Controllers\AdminController::class,'importCSV']);
+
+Route::get('adminhome',[App\Http\Controllers\AdminController::class,'home']);
+
+
+Route::get('reportview',[\App\Http\Controllers\Report::class,'view']);
+
+Route::post('reportview',[\App\Http\Controllers\Report::class,'add']);
