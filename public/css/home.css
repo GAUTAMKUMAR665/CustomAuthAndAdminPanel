@@ -1,0 +1,26 @@
+table{
+    position: absolute;
+ 
+    width: 500PX;
+    border-collapse: collapse;
+}
+
+td,th{
+border: 1px solid black;
+padding: 2px;
+}
+tr:nth-child(even)
+{
+    background: #dddddd;
+}
+
+button{
+    padding: 2px;
+    margin: 2px;
+}
+
+#editview{
+    position: absolute;
+    left:700px;
+    top:200px
+}

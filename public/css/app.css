@@ -1,0 +1,20 @@
+
+
+body{
+    background:lightblue;
+}
+
+#formid{
+    position: absolute;
+    height:60px;
+    width:300px;
+    border:2px solid grey;
+    border-radius: 15px;
+}
+#csvid{
+    position: absolute;
+    height:60px;
+    width:200px;
+    border:2px solid rgb(131, 56, 56);
+    border-radius: 15px;
+}

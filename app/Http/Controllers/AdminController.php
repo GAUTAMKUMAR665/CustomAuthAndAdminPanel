@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
+use App\Models\Authentication;
 
 $GLOBALS['colname']=[];
 $GLOBALS['header']=null;
@@ -16,8 +17,35 @@ class AdminController extends Controller
 
     public function home()
     {
-        return view('Admin.home');
+        $user=Authentication::all();
+        return view('Admin.home',['user'=>$user]);
     }
+
+public function ajaxdata(Request $request)
+{
+    $id=$request->id;
+
+    $user=Authentication::where('id',$id)->get();
+
+  
+    $view=view('Admin.edit',['user'=>$user])->render();
+   
+    return $view;
+
+}
+
+public function edit(Request $request){
+
+    $id=$request->id;
+    $data=Authentication::whereId($id)->update($request->all());
+
+}
+public function delete(Request $request){
+
+    $id=$request->id;
+    $data=Authentication::whereId($id)->delete();
+
+}
 
 
 

@@ -22,13 +22,13 @@ class AuthenticationController extends Controller
                'confirmpassword'=>'required|same:password',
            ]));
 try{
-           $token=getenv("TWILIO_AUTH_TOKEN");
+          /*  $token=getenv("TWILIO_AUTH_TOKEN");
            $twilio_sid=getenv("TWILIO_SID");
            $twilio_verify_sid=getenv("TWILIO_VERIFY_SID");
            $twilio=new Client($twilio_sid,$token);
            $verification=$twilio->verify->v2->services($twilio_verify_sid)
            ->verifications
-           ->create($request->phone, "sms");
+           ->create($request->phone, "sms"); */
          
             //return response()->json($verification->sid);
             $user=new Authentication();
