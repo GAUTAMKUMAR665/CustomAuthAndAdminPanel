@@ -30,10 +30,13 @@ Route::group(['middleware'=>'jwt.auth'],function(){
 Route::get('getcsv',[App\Http\Controllers\AdminController::class,'export']);
 Route::post('postcsv',[App\Http\Controllers\AdminController::class,'importCSV']);
 
-Route::get('adminhome',[App\Http\Controllers\AdminController::class,'home']);
+Route::get('Adminhome',[App\Http\Controllers\AdminController::class,'home']);
 Route::post('Ajaxdata',[\App\Http\Controllers\AdminController::class,'ajaxdata']);
 Route::post('Editdata',[\App\Http\Controllers\AdminController::class,'edit']);
 Route::post('Deletedata',[\App\Http\Controllers\AdminController::class,'delete']);
+
+
+Route::get('Usersdata',[App\Http\Controllers\Userscontroller::class,'data']);
 
 
 

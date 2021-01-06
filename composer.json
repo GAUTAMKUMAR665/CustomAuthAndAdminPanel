@@ -15,7 +15,9 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "twilio/sdk": "^6.15",
-        "tymon/jwt-auth": "dev-develop"
+        "tymon/jwt-auth": "dev-develop",
+        "yajra/laravel-datatables-buttons": "^2.0",
+        "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
