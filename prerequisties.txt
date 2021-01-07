@@ -20,12 +20,14 @@ composer require yajra/laravel-datatables-oracle
 'providers' => [
 	....
 	Yajra\DataTables\DataTablesServiceProvider::class,
+	  Yajra\DataTables\ButtonsServiceProvider::class,
 ]
 'aliases' => [
 	....
 	php artisan vendor:publish --force
 ]
 
+ php artisan make:mail SendMail --markdown=Email.resetPassword
 COMPOSER_MEMORY_LIMIT=-1
 git init
 git add README.md

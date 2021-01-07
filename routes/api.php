@@ -21,9 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'register']);
 Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verify']);
+Route::post('Login',[App\Http\Controllers\AuthenticationController::class,'login']);
 
 Route::group(['middleware'=>'jwt.auth'],function(){
-    Route::post('jwttoken',[App\Http\Controllers\AuthenticationController::class,'jwtdecode']);
+    Route::post('GetUser',[App\Http\Controllers\AuthenticationController::class,'jwtdecode']);
+    Route::post('Logout',[App\Http\Controllers\AuthenticationController::class,'logout']);
 });
 
 

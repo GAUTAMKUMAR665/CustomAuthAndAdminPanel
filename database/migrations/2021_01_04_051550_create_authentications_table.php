@@ -21,6 +21,7 @@ class CreateAuthenticationsTable extends Migration
             $table->boolean('is_verified')->default(false);
             $table->string('password');
             $table->string('_token')->nullable();
+            $table->string('password_token')->nullable();
             $table->string('confirmpassword');
             $table->timestamps();
         });
