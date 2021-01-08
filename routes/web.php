@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/passwordreset',function()
+{
+  return view('Admin.Users.passwordreset');
+})->middleware('guest')->name('passwordreset');
+
+Route::post('/reset',[App\Http\Controllers\AuthenticationController::class,'passwordReset']);
+
+Route::get('/token',function()
+{
+    return response()->json(csrf_token());
+});

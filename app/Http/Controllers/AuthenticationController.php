@@ -9,14 +9,103 @@ use Tymon\JWTAuth\Facades\JWTAuth ;
 use Twilio\Rest\Client;
 use Twilio\Rest\TwilioException;
 use Twilio\Exceptions\RestException;
-use App\Mail\SendMail;
+use App\Traits\SendMail;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use App\Mail\OrderShipped;
+
+
+
 
 class AuthenticationController extends Controller
 {
-    public function register(Request $request)
+    use SendMail;
+
+   public function register(Request $request)
+   {
+       $validator=Validator::make($request->all(),[
+           'name'=>'required|string|max:255',
+           'email'=>'required|string|max:255|email:unique',
+           'phone'=>'required',
+           'password'=>'required',
+           'confirmpassword'=>'required|same:password'
+       ]);
+
+       if($validator->fails())
+       {
+           $message=[];
+           $errors=json_decode(json_encode($validator->errors()));
+
+           if(isset($errors->name[0]))
+           {
+               $message=$errors->name[0];
+           }
+           elseif(isset($errors->email))
+           {
+               $message=$errors->email[0];
+           }
+           elseif(isset($errors->phone)){
+               $message=$errors->phone[0];
+           }
+           elseif(isset($errors->password))
+           {
+               $message=$errors->password[0];
+           }
+           elseif(isset($errors->confirmpassword))
+           {
+                $message=$errors->confirmpassword[0];
+           }
+
+           return response()->json(['status'=>0,'message'=>$message,'data'=>json_decode("{}")]);
+       }
+       else{
+        $otp=rand(100000,999999);
+        $message="Hi Welcome To Targlo App Your OTP is".$otp;
+        $phone=$request->phone;
+        
+        if($this->sendSms($phone,$message)){
+            return response()->json(['status'=>1,'message'=>"OTP SENT",'data'=>json_decode('{}'),'respondcode'=>'APP001']);
+        }
+        else{
+            return response()->json(['status'=>0,'message'=>"OTP Sending Failed, Please Enter A Valid Phone Number",'data'=>json_decode('{}'),'respondcode'=>'NP977']);
+        }
+
+       
+       }
+
+   }
+
+   public function passwordReset(Request $request)
+   {
+       $message="";
+         $validator=Validator::make($request->all(),[
+             'email'=>'required|string|max:255|email'
+         ]);
+
+         if($validator->fails())
+         {
+             $errors=json_decode(json_encode($validator->errors()));
+             if(isset($errors->email))
+             {
+                return response()->json(['status'=>0,'message'=>json_decode($errors->email[0])]);
+             }
+         }
+         else{
+
+           // return response()->json(['email'=>$request->email]);
+            // $status=Password::sendResetLink($request->only('email'));
+
+            $status=Mail::to($request->email)->send(new OrderShipped);
+
+             return response()->json(['status'=>$status]); 
+         }
+         
+   }
+    public function twilioregister(Request $request)
     {
            $data=(request()->validate([
                'name'=>'required',
@@ -155,33 +244,6 @@ try{
 
     public function forgetPassword(Request $request)
     {
-        $data=(request()->validate([
-            'email'=>'required|email'
-        ]));
-
-        if($request->email)
-        {
-            $status=Authentication::select('is_verified')->where('email',$request->email);
-
-            if($status==true)
-            {
-                $token=Authentication::select('password_token')->where('email',$request->email);
-
-                if($token)
-                {
-                   $mailmsg=Mail::to($request->email)->send(new SendMail($token));
-                }
-                else{
-                   $token=Str::random(80);
-                   $report=Authentication::insert('password_token',$token)->where('email',$request->email);
-                   $msgmail=Mail::to($request->email)->send(new SendMail($token));
-                }
-            }
-            else{
-                return response()->json('Message','Email is not Verified');
-            }
-        }
-
-
     }
+       
 }
