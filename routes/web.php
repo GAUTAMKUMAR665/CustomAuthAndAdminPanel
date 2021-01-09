@@ -24,7 +24,7 @@ Route::get('/passwordreset',function()
   return view('Admin.Users.passwordreset');
 })->middleware('guest')->name('passwordreset');
 
-Route::post('/reset',[App\Http\Controllers\AuthenticationController::class,'passwordReset']);
+
 
 Route::get('/token',function()
 {

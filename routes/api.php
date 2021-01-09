@@ -19,9 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'register']);
-Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verify']);
+Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'twilioregister']);
+Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
+Route::post('verifyemail',[App\Http\Controllers\AuthenticationController::class,'verifyemail']);
+
 Route::post('Login',[App\Http\Controllers\AuthenticationController::class,'login']);
+Route::post('/reset',[App\Http\Controllers\AuthenticationController::class,'passwordReset']);
 
 Route::group(['middleware'=>'jwt.auth'],function(){
     Route::post('GetUser',[App\Http\Controllers\AuthenticationController::class,'jwtdecode']);

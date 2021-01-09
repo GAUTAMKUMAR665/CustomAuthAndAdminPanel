@@ -19,6 +19,7 @@ class CreateAuthenticationsTable extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->boolean('is_verified')->default(false);
+            $table->string('verification_method');
             $table->string('password');
             $table->string('_token')->nullable();
             $table->string('password_token')->nullable();

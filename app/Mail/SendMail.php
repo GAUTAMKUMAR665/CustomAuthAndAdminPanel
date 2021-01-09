@@ -5,10 +5,9 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-
 use Illuminate\Queue\SerializesModels;
 
-class OrderShipped extends Mailable
+class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,6 +28,6 @@ class OrderShipped extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.orders.shipped');
+        return $this->markdown('Email.resetPassword');
     }
 }

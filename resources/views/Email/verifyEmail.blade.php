@@ -1,10 +1,9 @@
 @component('mail::message')
-# MESSAGE
-
-Please Click  Button to Reset your password
+VERIFY EMAIL
+Click Below Button To Verify Email
 
 @component('mail::button', ['url' => 'https://www.google.com'])
- Reset your password
+Verify Your Eamil.
 @endcomponent
 
 Thanks,<br>

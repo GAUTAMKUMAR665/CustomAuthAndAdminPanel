@@ -15,12 +15,6 @@ class CreateCatogeriesTable extends Migration
     {
         Schema::create('catogeries', function (Blueprint $table) {
             $table->id();
-            $table->string('college_id')->unique();
-            $table->string('title');
-            $table->string('catogery');
-            $table->string('status');
-            $table->string('added_date');
-            $table->string('modified_data');
             $table->timestamps();
         });
     }
