@@ -29,6 +29,11 @@ class AuthenticationController extends Controller
 {
     //use SendMail;
 
+    public function registerview()
+    {
+        return view('Auth.Register');
+    }
+
    public function register(Request $request)
    {
        $validator=Validator::make($request->all(),[

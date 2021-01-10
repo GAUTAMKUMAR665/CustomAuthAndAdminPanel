@@ -1,0 +1,21 @@
+:root{
+    --main-bg-color:#ecf0f3
+}
+
+body{
+    background-color: var(--main-bg-color);
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    position: fixed;
+    height: 700px;
+    width:550px;
+    margin: auto;
+    padding:2rem ;
+    border-radius:2.5rem ;
+    background-color: var(--main-bg-color);
+    box-shadow: 13px 13px 20px #cbced1,
+            -13px -13px 20px #ffffff;
+}

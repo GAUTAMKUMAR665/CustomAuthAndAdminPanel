@@ -18,8 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'twilioregister']);
+Route::get('Register/view',[App\Http\Controllers\AuthenticationController::class,'registerView']);
+Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'register']);
 Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
 Route::post('verifyemail',[App\Http\Controllers\AuthenticationController::class,'verifyemail']);
 
