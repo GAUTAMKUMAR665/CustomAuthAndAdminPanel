@@ -16,12 +16,12 @@ class CreateAuthenticationsTable extends Migration
         Schema::create('authentications', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('email');
+            $table->string('phone');
             $table->boolean('is_verified')->default(false);
-            $table->string('verification_method');
+            $table->string('verification_method')->nullable();
             $table->string('password');
-            $table->string('_token')->nullable();
+            $table->longText('_token')->nullable();
             $table->string('password_token')->nullable();
             $table->string('confirmpassword');
             $table->timestamps();

@@ -18,8 +18,9 @@ body{
 }
         .container{
     position: fixed;
-    height: 700px;
-    width:550px;
+    height: 550px;
+    width:350px;
+    left:500px;
     margin: auto;
     padding:2rem ;
     border-radius:2.5rem ;
@@ -29,6 +30,8 @@ body{
 }
 .logo{
 display: flex;
+position: relative;
+left:130px;
 margin-bottom: 20px;
 width: 100%;
 }
@@ -60,7 +63,7 @@ margin-bottom: 32px;
 	 font-size: 0.875rem;
 	 padding: 16px;
 	padding-left: 40px;
- 	width: 100%;
+ 	width: 300px;
  	border-radius: 24px;
 	box-shadow:
 		inset 8px 8px 8px #CBCED1,
@@ -94,26 +97,68 @@ inset -8px -8px -8px #ffffff
 {
     color: #CCCCCC;
 }
+.form_button {
+position: relative;
+height:50px;
+width:150px;
+top:40px;
+left:0px;
+background-color: blue;
+border-radius:20px;
+}
+.form_button:focus{
+outline:none;
+}
+label[for="name"]{
+    position: relative;
+    left:20px;
+    color: #635e5e;
+	letter-spacing: 0.15em;
+}
 label[for="email"]{
     position: relative;
     left:20px;
     color: #635e5e;
 	letter-spacing: 0.15em;
 }
-label[for="verifys"]{
+label[for="phone"]{
     position: relative;
     left:20px;
     color: #635e5e;
-    letter-spacing: 0.15em;
-    border-radius: 2.5rem;
-    padding: 1rem;
-    padding-bottom: 2.5rem;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #ffffff;
+	letter-spacing: 0.15em;
+}
+label[for="password"]{
+    position: relative;
+    left:20px;
+    color: #635e5e;
+	letter-spacing: 0.15em;
+}
+label[for="cofirmpassword"]{
+    position: relative;
+    left:20px;
+    color: #635e5e;
+	letter-spacing: 0.15em;
+}
+ label[for="verification_method"]{
+    position: relative;
+    height: 20px;
+    width:30px;
+    left:17px;
+    top:5px;
+    color: #635e5e;
+	letter-spacing: 0.15em;
+
 }
 select{
+    position: relative;
+      height: 20px;
+    width:100px;
+    left:17px;
+    top:0px;
     z-index: 100;
 }
+
+
 
 
     </style>
@@ -125,39 +170,34 @@ select{
         <div class="logo_svg"></div>
     </div>
 </div>
-<form  action="" method="post">
+<form  action="/api/Register" method="post">
     <div class="form_group">
-        <label  for="email">Email</label>
-        <div class="inputs">
-            <input type="text" id="email" class="form_input" placeholder="Please Enter Your Email">
-        </div>
+
         <label  for="name">Name</label>
         <div class="inputs">
-            <input type="text" id="name" class="form_input" placeholder="Please Enter Your Email">
+            <input type="text" id="name" name="name" class="form_input" placeholder="Please Enter Your Name">
+        </div>
+
+        <label  for="email">Email</label>
+        <div class="inputs">
+            <input type="text" id="email" name="email" class="form_input" placeholder="Please Enter Your Email">
         </div>
         <label  for="phone">Phone</label>
         <div class="inputs">
-            <input type="text" id="phone" class="form_input" placeholder="Please Enter Your Email">
+            <input type="text" id="phone" name="phone" class="form_input" placeholder="Please Enter Your Phone">
         </div>
         <label  for="password">Password</label>
         <div class="inputs">
-            <input type="text" id="password" class="form_input" placeholder="Please Enter Your Email">
+            <input type="text" id="password" name="password" class="form_input" placeholder="Please Enter Your Password">
         </div>
-        <label  for="email">Email</label>
+        <label  for="cofirmpassword">Confirmpassword</label>
         <div class="inputs">
-            <input type="text" id="email" class="form_input" placeholder="Please Enter Your Email">
+            <input type="text" id="cofirmpassword" name="confirmpassword" class="form_input" placeholder="Please ReEnter Your Password">
         </div>
-        <label  for="email">Email</label>
-        <div class="inputs">
-            <label for="verifys">Please select your verificetion method</label>
-            <select name="" id="verify">
-                <option value="">Email</option>
-                <option value="">Phone</option>
-            </select>
-        </div>
-    </div>
 
+    <input type="submit" id="submit" class="form_button" value="submit">
 
+@csrf
 </form >
     </div>
 </body>

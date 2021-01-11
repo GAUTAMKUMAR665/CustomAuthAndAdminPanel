@@ -20,11 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('Register/view',[App\Http\Controllers\AuthenticationController::class,'registerView']);
 Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'register']);
-Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
-Route::post('verifyemail',[App\Http\Controllers\AuthenticationController::class,'verifyemail']);
+Route::post('poverifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
+Route::post('verify',[App\Http\Controllers\AuthenticationController::class,'verification']);
+Route::get('verifyemail',[App\Http\Controllers\AuthenticationController::class,'verifyemail']);
 
+Route::get('Login/view',[App\Http\Controllers\AuthenticationController::class,'loginView']);
 Route::post('Login',[App\Http\Controllers\AuthenticationController::class,'login']);
-Route::post('/reset',[App\Http\Controllers\AuthenticationController::class,'passwordReset']);
+Route::get('forget',[App\Http\Controllers\AuthenticationController::class,'forget']);
+Route::post('reset',[App\Http\Controllers\AuthenticationController::class,'passwordReset']);
 
 Route::group(['middleware'=>'jwt.auth'],function(){
     Route::post('GetUser',[App\Http\Controllers\AuthenticationController::class,'jwtdecode']);
