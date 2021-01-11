@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
@@ -27,9 +28,9 @@ public function ajaxdata(Request $request)
 
     $user=Authentication::where('id',$id)->get();
 
-  
+
     $view=view('Admin.edit',['user'=>$user])->render();
-   
+
     return $view;
 
 }
@@ -101,15 +102,15 @@ public function delete(Request $request){
             //array_push($column,$GLOBALS['colname']);
             $details=$this->csvToArray($filepath);
 
-            $nfilename=stripslashes($filepath);
-            $find=array(".csv","_","D:","xampp","htdocs","gym","public","uploads","CSV",'/'," ","newfolder(2)","UsersgautamDesktoplaravelnewrepo3-","CUSTOMAUTHADMIN");
-            $GLOBAL['tablename']=str_ireplace($find, "", $nfilename);
+            //$nfilename=stripslashes($filepath);
+            //$find=array(".csv","_","D:","xampp","htdocs","gym","public","uploads","CSV",'/'," ","newfolder(2)","UsersgautamDesktoplaravelnewrepo3-","CUSTOMAUTHADMIN");
+            //$GLOBAL['tablename']=str_ireplace($find, "", $nfilename);
 
             /* for ($i=0; $i <count($GLOBALS['header']); $i++) {
              $find=array(" ");
              $GLOBALS['header'][$i]=str_ireplace($find, "_", $GLOBALS['header'][$i]);
             } */
-            Schema::create($GLOBAL['tablename'], function (Blueprint $table) {
+        /*     Schema::create($GLOBAL['tablename'], function (Blueprint $table) {
                 for ($i=0; $i <count($GLOBALS['header']) ; $i++) {
                     array_push($GLOBALS['colname'], $GLOBALS['header'][$i]);
                 }
@@ -120,9 +121,10 @@ public function delete(Request $request){
                 }
                 $table->timestamps();
             });
-
+ */
             for ($i=0; $i <count($details) ; $i++) {
-                DB::table($GLOBAL['tablename'])->insert([$details[$i]]);
+                //DB::table($GLOBAL['tablename'])->insert([$details[$i]]);
+                Admin::insert([$details[$i]]);
             }
 
             dd($GLOBALS['header']);

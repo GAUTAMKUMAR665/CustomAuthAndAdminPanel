@@ -15,31 +15,29 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string("Category_Id");
-            $table->string("Publisher_Id");
-            $table->string("Report_Type");
-            $table->string("Title");
-            $table->string("Slug");
-            $table->string("Total_Page");
-            $table->string("Table_of_Content");
-            $table->string("Description");
-            $table->string("Segmentation");
-            $table->string("Market_key_Player");
-            $table->string("List_of_table");
-            $table->string("Currency");
-            $table->string("Single_User_Amount");
-            $table->string("Multi_User_Amount");
-            $table->string("Enterprise_Amount");
-            $table->string("Data_Pack_Amount");
-            $table->string("Meta_Title");
-            $table->string("Meta_Description");
-            $table->string("Meta_Canonical");
-            $table->string("Date_Published");
-            $table->string('status');
+            $table->longText("Category_Id");
+            $table->longText("Publisher_Id");
+            $table->longText("Report_Type");
+            $table->longText("Title");
+            $table->longText("Slug");
+            $table->longText("Total_Page");
+            $table->longText("Table_of_Content");
+            $table->longText("Description");
+            $table->longText("Segmentation");
+            $table->longText("key_player");
+            $table->longText("Summary");
+            $table->longText("Currency");
+            $table->longText("Single_User_Amount");
+            $table->longText("Multi_User_Amount");
+            $table->longText("Enterprise_Amount");
+            $table->longText("Data_Pack_Amount");
+            $table->longText("Meta_Title");
+            $table->longText("Meta_Description");
+            $table->longText("Meta_Canonical");
+            $table->longText("Date_Published");
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

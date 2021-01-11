@@ -1,9 +1,9 @@
 @extends('Admin.home');
 
 
-@section('import')
+@section('content')
 
-@include('Admin.impots')
+{{-- @include('Admin.impots') --}}
 <section>
     <form action="postcsv" method="post" enctype="multipart/form-data" id="formid">
         <input type="file" name="csvfile" id="csvid">
