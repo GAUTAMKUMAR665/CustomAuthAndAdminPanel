@@ -7,9 +7,15 @@
     <title>Document</title>
 </head>
 <body>
+
 <form action="Logout" method="post">
     <input type="hidden" name="token" value={{$token}}>
     <input type="submit" value="Logout">
+    @csrf
+</form>
+<form action="GetUser" method="post">
+    <input type="hidden" name="token" value={{$token}}>
+    <input type="submit" value="profile">
     @csrf
 </form>
 </body>

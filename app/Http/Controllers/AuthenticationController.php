@@ -205,6 +205,7 @@ else{
 
                      $report=tap(Authentication::where('email',$request->email))->update(['_token'=>$token]);
 
+
                      return view('Auth.profile',['token'=>$token]);
 
                    // return response()->json(['status'=>1,'Message'=>'User Login Successsfully']);
@@ -263,6 +264,7 @@ public function logout(Request $request)
    $TOKEN="Bearer ".$request->token;
    try{
     JWTAuth::invalidate($TOKEN);
+    $pretoken=Authentication::where('_token',$request->token)->update(['_token'=>null]);
 
     return view('Auth.Login');
 
@@ -341,7 +343,11 @@ public function logout(Request $request)
 
             $user=JWTAuth::authenticate($request->token);
 
-            return response()->json($user);
+           // return view('Auth.profile',['user'=>$user]);
+
+            return view('Auth.userprofile',['user'=>$user]);
+
+           // return response($user->id);//->json($user->id);
 
           }catch(\Tymon\JWTAuth\Exceptions\UserNotDefinedException $e)
           {

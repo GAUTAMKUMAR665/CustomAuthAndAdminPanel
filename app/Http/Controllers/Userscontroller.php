@@ -16,7 +16,7 @@ class Userscontroller extends Controller
         {
 
             return DataTables::of($data)
-            ->skipPaging()
+
             ->addIndexColumn()
             ->addColumn('action',function($row)
             {

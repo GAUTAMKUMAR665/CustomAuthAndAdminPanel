@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('Register/view',[App\Http\Controllers\AuthenticationController::class,'registerView']);
 Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'register']);
-Route::post('poverifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
+Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
 Route::post('verify',[App\Http\Controllers\AuthenticationController::class,'verification']);
 Route::get('verifyemail',[App\Http\Controllers\AuthenticationController::class,'verifyemail']);
 
@@ -34,15 +34,19 @@ Route::group(['middleware'=>'jwt.auth'],function(){
     Route::post('Logout',[App\Http\Controllers\AuthenticationController::class,'logout']);
 });
 
-
+############################################################################################################################
 Route::get('getcsv',[App\Http\Controllers\AdminController::class,'export']);
 Route::post('postcsv',[App\Http\Controllers\AdminController::class,'importCSV']);
-
 Route::get('Adminhome',[App\Http\Controllers\AdminController::class,'home']);
 Route::post('Ajaxdata',[\App\Http\Controllers\AdminController::class,'ajaxdata']);
 Route::post('Editdata',[\App\Http\Controllers\AdminController::class,'edit']);
 Route::post('Deletedata',[\App\Http\Controllers\AdminController::class,'delete']);
+############################################################################################################################
 
+Route::get('view/report',[\App\Http\Controllers\Admin\Report::class,'view']);
+Route::get('edit/report/{id}',[\App\Http\Controllers\Admin\Report::class,'editform']);
+Route::post('delete/report',[\App\Http\Controllers\Admin\Report::class,'delete']);
+Route::post('edit/report',[\App\Http\Controllers\Admin\Report::class,'edit']);
 
 Route::get('Usersdata',[App\Http\Controllers\Userscontroller::class,'data']);
 
