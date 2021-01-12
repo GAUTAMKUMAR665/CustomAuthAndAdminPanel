@@ -30,3 +30,5 @@ Route::get('/token',function()
 {
     return response()->json(csrf_token());
 });
+
+Route::get('targlo/main',[\App\Http\Controllers\Statics\frontend::class,'index']);
