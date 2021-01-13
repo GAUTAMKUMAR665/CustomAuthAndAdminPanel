@@ -38,3 +38,4 @@ Route::get('/service',[\App\Http\Controllers\Statics\frontend::class,'service'])
 Route::get('/report',[\App\Http\Controllers\Statics\frontend::class,'report']);
 Route::get('/aboutus',[\App\Http\Controllers\Statics\frontend::class,'about']);
 Route::get('/contactus',[\App\Http\Controllers\Statics\frontend::class,'contact']);
+Route::get('/panel', [\App\Http\Controllers\Statics\frontend::class,'panel']);

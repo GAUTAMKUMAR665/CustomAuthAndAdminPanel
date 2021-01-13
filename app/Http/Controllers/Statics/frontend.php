@@ -31,4 +31,8 @@ class frontend extends Controller
    {
        return view('targlo.contact');
    }
+   public function panel()
+   {
+       return view('Admin.AdminPanel');
+   }
 }
