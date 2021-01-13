@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateAdminsTable extends Migration
 {
@@ -15,26 +16,26 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->longText("Category_Id");
-            $table->longText("Publisher_Id");
-            $table->longText("Report_Type");
-            $table->longText("Title");
-            $table->longText("Slug");
-            $table->longText("Total_Page");
-            $table->longText("Table_of_Content");
-            $table->longText("Description");
-            $table->longText("Segmentation");
-            $table->longText("key_player");
-            $table->longText("Summary");
-            $table->longText("Currency");
-            $table->longText("Single_User_Amount");
-            $table->longText("Multi_User_Amount");
-            $table->longText("Enterprise_Amount");
-            $table->longText("Data_Pack_Amount");
-            $table->longText("Meta_Title");
-            $table->longText("Meta_Description");
-            $table->longText("Meta_Canonical");
-            $table->longText("Date_Published");
+            $table->longText("Category_Id")->nullable();
+            $table->longText("Publisher_Id")->nullable();
+            $table->longText("Report_Type")->nullable();
+            $table->longText("Title")->nullable();
+            $table->longText("Slug")->nullable();
+            $table->longText("Total_Page")->nullable();
+            $table->longText("Table_of_Content")->nullable();
+            $table->longText("Description")->nullable();
+            $table->longText("Segmentation")->nullable();
+            $table->longText("key_player")->nullable();
+            $table->longText("Summary")->nullable();
+            $table->longText("Currency")->nullable();
+            $table->longText("Single_User_Amount")->nullable();
+            $table->longText("Multi_User_Amount")->nullable();
+            $table->longText("Enterprise_Amount")->nullable();
+            $table->longText("Data_Pack_Amount")->nullable();
+            $table->longText("Meta_Title")->nullable();
+            $table->longText("Meta_Description")->nullable();
+            $table->longText("Meta_Canonical")->nullable();
+            $table->longText("Date_Published")->nullable();
             $table->timestamps();
         });
     }

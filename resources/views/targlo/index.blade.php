@@ -13,7 +13,7 @@
 
 				</div>
 				<div class="col-md-6">
-					<img src="img/laptop.png" class="laptop-image" alt="">
+					<img src="{{ asset('css\targlo\img\laptop.png') }}" class="laptop-image" alt="">
 				</div>
 			</div>
 		</div>
@@ -32,7 +32,7 @@
 					<a href="" class="site-btn sb-gradients sbg-line mt-5">Get Started</a>
 				</div>
 				<div class="about-img col-md-6">
-					<img src="img/about-img.png" alt="">
+					<img src="{{ asset('css\targlo\img\about-img.png') }}" alt="">
 				</div>
 			</div>
 

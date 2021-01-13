@@ -29,7 +29,7 @@ class Userscontroller extends Controller
             ->addColumn('extra',function($row)
             {
                  //$btn="<a href='javascript:void(0)' class='view btn-info btn-sm'>View</a>";
-                 $btn="<a href='javascript:void(0)' class='edit btn-primary btn-sm' onclick='editdata(".$row->id.")' id='".$row->id."'>Edit</a>";
+                 $btn="<a href='javascript:void(0)' class='edit btn-primary btn-sm' ' id='".$row->id."'>Edit</a>";
                  $btn=$btn."<a href='javascript:void(0)' class='delete btn-danger btn-sm' onclick='deletedata(".$row->id.")' id='".$row->id."'>Delete</a>";
 
                  return $btn;

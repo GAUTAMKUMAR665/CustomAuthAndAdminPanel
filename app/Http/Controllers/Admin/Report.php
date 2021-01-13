@@ -34,14 +34,7 @@ class Report extends Controller
         return view('Admin.report.edit',['report'=>$report[0]]);
   }
 
-  public function delete(Request $request)
-  {
-      if($request->id)
-      {
-          Admin::where(['id'=>$request->id])->delete();
-      }
 
-  }
   public function edit(Request $request)
   {
 
@@ -80,6 +73,82 @@ class Report extends Controller
 
 
       }
+
+
+  }
+  public function delete(Request $request)
+  {
+      if($request->id)
+      {
+          Admin::where(['id'=>$request->id])->delete();
+      }
+
+  }
+  public function addform()
+  {
+      $report=Admin::select('*')->get();
+        return view('Admin.report.add',['report'=>$report]);
+  }
+
+  public function add(Request $request)
+  {
+    $validator=Validator::make($request->all(),[
+    "Category_Id"=>"required",
+    "Publisher_Id"=>"required",
+    "Report_Type"=>"required",
+    "Title"=>"required",
+    "Slug"=>"required",
+    "Total_Page"=>"required",
+    "Table_of_Content"=>"required",
+    "Description"=>"required",
+    "Segmentation"=>"required",
+    "key_player"=>"required",
+    "Summary"=>"required", "Currency"=>"required",
+    "Single_User_Amount"=>"required",
+    "Multi_User_Amount"=>"required",
+    "Enterprise_Amount"=>"required",
+    "Data_Pack_Amount"=>"required",
+    "Meta_Title"=>"required",
+    "Meta_Description"=>"required",
+    "Meta_Canonical"=>"required",
+    "Date_Published"=>"required",
+    ]);
+    if($validator->fails())
+    {
+        $errors=json_decode(json_encode($validator->errors()));
+
+        return response()->json(['status'=>0,'Message'=>$errors]);
+    }
+    else{
+
+        $report=new Admin();
+        $report->Category_Id=$request->Category_Id;
+        $report->Publisher_Id=$request->Publisher_Id;
+        $report->Report_Type=$request->Report_Type;
+        $report->Title=$request->Title;
+        $report->Slug=$request->Slug;
+        $report->Total_Page=$request->Total_Page;
+        $report->Table_of_Content=$request->Table_of_Content;
+        $report->Description=$request->Description;
+        $report->Segmentation=$request->Segmentation;
+        $report->key_player=$request->key_player;
+        $report->Summary=$request->Summary;
+        $report->Currency=$request->Currency;
+        $report->Single_User_Amount=$request->Single_User_Amount;
+        $report->Multi_User_Amount=$request->Multi_User_Amount;
+        $report->Enterprise_Amount=$request->Enterprise_Amount;
+        $report->Data_Pack_Amount=$request->Data_Pack_Amount;
+        $report->Meta_Title=$request->Meta_Title;
+        $report->Meta_Description=$request->Meta_Description;
+        $report->Meta_Canonical=$request->Meta_Canonical;
+        $report->Date_Published=$request->Date_Published;
+
+        $report->save();
+
+        return response()->json(['status'=>1,'Message'=>'Report successfully Added']);
+
+    }
+
 
 
   }

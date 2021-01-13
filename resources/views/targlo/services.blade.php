@@ -25,7 +25,7 @@
 					<a href="" class="site-btn sb-gradients sbg-line mt-5">Get Started</a>
 				</div>
 				<div class="about-img col-md-6">
-					<img src="img/about-img.png" alt="">
+					<img src="{{ asset('css/targlo/img/about-img.png') }}" alt="">
 				</div>
 			</div>
 
@@ -83,7 +83,7 @@
 				<div class="col-md-4 process">
 					<div class="process-step">
 						<figure class="process-icon">
-							<img src="img/process-icons/1.png" alt="#">
+							<img src="{{ asset('css/targlo/img/process-icons/1.png') }}" alt="#">
 						</figure>
 						<h4>Create Your Wallet</h4>
 						<p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
@@ -92,7 +92,7 @@
 				<div class="col-md-4 process">
 					<div class="process-step">
 						<figure class="process-icon">
-							<img src="img/process-icons/2.png" alt="#">
+							<img src="{{ asset('css/targlo/img/process-icons/2.png') }}" alt="#">
 						</figure>
 						<h4>Create Your Wallet</h4>
 						<p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
@@ -101,7 +101,7 @@
 				<div class="col-md-4 process">
 					<div class="process-step">
 						<figure class="process-icon">
-							<img src="img/process-icons/3.png" alt="#">
+							<img src="{{ asset('css/targlo/img/process-icons/3.png') }}" alt="#">
 						</figure>
 						<h4>Create Your Wallet</h4>
 						<p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum. </p>

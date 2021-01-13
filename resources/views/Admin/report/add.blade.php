@@ -4,21 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ADD REPORT</title>
+<style>
+    input{
+        width: 100%
 
+    }
+    input[type='submit']
+    {
+        position: relative;
+        width: 30%;
+        left:400px;
+        color: aquamarine;
+        margin-top: 30px;
+    }
+    select{
+        position: relative;
+        width:30%;
+    }
+    label{
+        margin-top: 15px;
+    }
+</style>
 </head>
 <body>
-    <form action="" method="post">
-        <label for="Catogery_Id">Select Catogery Id</label>
+    <form action="/api/add/reports" method="post">
+        <label for="Category_Id">Select Catogery Id</label>
         <select name="Category_Id" id="Category_Id">
             @foreach ($report as $reports)
-                <option value="{{ $reports->Catogery_Id }}">{{ $reports->Catogery_Id }}</option>
+                <option value="{{ $reports->Category_Id }}">{{ $reports->Category_Id }}</option>
             @endforeach
         </select>
         <label for="Publisher_Id">Select Publisher ID</label>
         <select name="Publisher_Id" id="Publisher_Id">
             @foreach ($report as $reports)
-                <option value="{{ $reports->Publisher_id}}">{{ $reports->Publisher_Id}}</option>
+                <option value="{{ $reports->Publisher_Id}}">{{ $reports->Publisher_Id}}</option>
             @endforeach
         </select>
         <label for="Report_Type">Enter Report Type</label>

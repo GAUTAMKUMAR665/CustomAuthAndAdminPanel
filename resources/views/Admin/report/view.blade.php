@@ -2,17 +2,18 @@
 
 @section('content')
 
+<div class="add">
+    <a href="/api/add/publiser">ADD Publisher</a>
+</div>
+
 <table class="table table-bordered data_table">
 <thead>
 <tr>
-    <th>Report Id</th>
-    <th>Title</th>
-    <th>Report URL</th>
-    <th>Catogery</th>
-    <th>Single_User_Amount</th>
-    <th>Multi_User_Amout</th>
-    <th>Data_Pack_Amout</th>
-    <th>Date_Published</th>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Message</th>
     <th>Action</th>
 </tr>
 </thead>
@@ -20,15 +21,13 @@
 
 </tbody>
 <tfoot>
-    <th>Report Id</th>
-    <th>Title</th>
-    <th>Report URL</th>
-    <th>Catogery</th>
-    <th>Single_User_Amount</th>
-    <th>Multi_User_Amout</th>
-    <th>Data_Pack_Amout</th>
-    <th>Date_Published</th>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Message</th>
     <th>Action</th>
+
 </tfoot>
 
 </table>
@@ -41,7 +40,7 @@ $(function()
         processing:true,
         serverSide:true,
         paging:true,
-        ajax:"{{url('/')}}/api/view/report",
+        ajax:"{{url('/')}}/api/view/publiser",
         columns:[
 
             {
@@ -53,60 +52,35 @@ $(function()
                 }
             },
             {
-                'data':'Title',
+                'data':'Name',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.Title;
+                    return row.name;
                 }
             },
             {
-                'data':'Report URL',
+                'data':'Email',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.Slug;
+                    return row.email;
                 }
             },
             {
-                'data':'Catogery',
+                'data':'phone',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.Meta_Title;
+                    return row.phone;
                 }
             },
             {
-                'data':'Single_User_Amount',
-                'className':'col-sm-3',
-
-                'render':function(data,type,row)
-                {
-                    return row.Single_User_Amount;
-                }
-            },
-            {
-                'data':'Multi_User_Amount',
+                'data':'Message',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.Multi_User_Amount;
-                }
-            },
-            {
-                'data':'Data_Pack_Amount',
-                'className':'',
-                'render':function(data,type,row)
-                {
-                    return row.Data_Pack_Amount;
-                }
-            },
-            {
-                'data':'Date_Published',
-                'className':'',
-                'render':function(data,type,row)
-                {
-                    return row.Date_Published;
+                    return row.message;
                 }
             },
             {
@@ -114,8 +88,7 @@ $(function()
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    var buttonHtml = '<a class="btn btn-primary" href="{{ url('/') }}/api/edit/report/'+row.id+'">Edit</a>&nbsp;&nbsp;<a class="btn btn-danger" href="javascript:void(0);" onclick="deleteData('+row.id+')">Delete</a>';
-                  return buttonHtml;
+                  return row.action;
                 }
             },
 

@@ -27,7 +27,7 @@
 				</div>
 
 				<div class="about-img col-md-6">
-					<img src="img/about-img.png" alt="">
+					<img src="{{ asset('css/targlo/img/about-img.png') }}" alt="">
 				</div>
 		    </div>
 		</div>
@@ -78,7 +78,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="about-img col-md-6">
-					<img src="img/about-img.png" alt="">
+					<img src="{{ asset('css/targlo/img/about-img.png') }}" alt="">
 				</div>
 				<div class="col-md-6 about-text">
 					<h2>What is Bitcoin</h2>

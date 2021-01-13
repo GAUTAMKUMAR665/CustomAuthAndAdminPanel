@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Route::get('/passwordreset',function()
 {
@@ -31,4 +31,10 @@ Route::get('/token',function()
     return response()->json(csrf_token());
 });
 
-Route::get('targlo/main',[\App\Http\Controllers\Statics\frontend::class,'index']);
+Route::get('/',[\App\Http\Controllers\Statics\frontend::class,'main']);
+Route::get('/index',[\App\Http\Controllers\Statics\frontend::class,'index']);
+Route::get('/industry',[\App\Http\Controllers\Statics\frontend::class,'industry']);
+Route::get('/service',[\App\Http\Controllers\Statics\frontend::class,'service']);
+Route::get('/report',[\App\Http\Controllers\Statics\frontend::class,'report']);
+Route::get('/aboutus',[\App\Http\Controllers\Statics\frontend::class,'about']);
+Route::get('/contactus',[\App\Http\Controllers\Statics\frontend::class,'contact']);
