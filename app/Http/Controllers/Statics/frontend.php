@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Statics;
 
+use App\Models\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -9,30 +10,99 @@ class frontend extends Controller
 {
    public function main()
    {
-       return view('targlo.main');
+       $industry=Admin::select('Meta_Title')->get()->toArray();
+       $find="Market Size, Share and Forecast";
+       $indusname=[];
+       for ($i=0; $i <count($industry) ; $i++) {
+           $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+       }
+      $indus=json_decode(json_encode($indusname),False);
+
+
+       return view('targlo.main',['indus'=> $indus]);
    }
    public function index()
    {
-       return view('targlo.index');
+    $industry=Admin::select('Meta_Title')->get()->toArray();
+    $find="Market Size, Share and Forecast";
+    $indusname=[];
+    for ($i=0; $i <count($industry) ; $i++) {
+        $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+    }
+   $indus=json_decode(json_encode($indusname),False);
+       return view('targlo.index',['indus'=> $indus]);
    }
    public function industry()
    {
-       return view('targlo.industry');
+    $industry=Admin::select('Meta_Title')->get()->toArray();
+    $find="Market Size, Share and Forecast";
+    $indusname=[];
+    for ($i=0; $i <count($industry) ; $i++) {
+        $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+    }
+   $indus=json_decode(json_encode($indusname),False);
+       return view('targlo.industry',['indus'=> $indus]);
    }
    public function service()
    {
-       return view('targlo.services');
+    $industry=Admin::select('Meta_Title')->get()->toArray();
+    $find="Market Size, Share and Forecast";
+    $indusname=[];
+    for ($i=0; $i <count($industry) ; $i++) {
+        $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+    }
+   $indus=json_decode(json_encode($indusname),False);
+       return view('targlo.services',['indus'=> $indus]);
+   }
+   public function report( $industry)
+   {
+       //dd($industry);
+       $industry=Admin::select('Meta_Title')->get()->toArray();
+       $find="Market Size, Share and Forecast";
+       $indusname=[];
+       for ($i=0; $i <count($industry) ; $i++) {
+           $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+       }
+      $indus=json_decode(json_encode($indusname),False);
+       $find="!";
+
+       $indusname=str_ireplace($find,"Market Size, Share and Forecast",$industry);
+
+       $report=Admin::where(['Meta_Title'=>$indusname])->get();
+
+       //dd($report);
+
+       return view('targlo.report',['report'=>$report,'indus'=> $indus]);
    }
    public function about()
    {
-       return view('targlo.about');
+    $industry=Admin::select('Meta_Title')->get()->toArray();
+    $find="Market Size, Share and Forecast";
+    $indusname=[];
+    for ($i=0; $i <count($industry) ; $i++) {
+        $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+    }
+   $indus=json_decode(json_encode($indusname),False);
+       return view('targlo.about',['indus'=> $indus]);
    }
    public function contact()
    {
-       return view('targlo.contact');
+    $industry=Admin::select('Meta_Title')->get()->toArray();
+    $find="Market Size, Share and Forecast";
+    $indusname=[];
+    for ($i=0; $i <count($industry) ; $i++) {
+        $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+    }
+   $indus=json_decode(json_encode($indusname),False);
+       return view('targlo.contact',['indus'=> $indus]);
    }
    public function panel()
    {
        return view('Admin.AdminPanel');
+   }
+
+   public function payment()
+   {
+       return view('targlo.payment');
    }
 }

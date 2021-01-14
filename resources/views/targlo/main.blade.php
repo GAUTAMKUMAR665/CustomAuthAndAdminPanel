@@ -14,7 +14,8 @@
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="{{asset('css/targlo/css/bootstrap.min.css')}}"/>
 	<link rel="stylesheet" href="{{asset('css/targlo/css/font-awesome.min.css')}}"/>
-	<link rel="stylesheet" href="{{asset('css/targlo/css/themify-icons.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/targlo/css/themify-icons.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/logout.css')}}"/>
 
 
 	<link rel="stylesheet" href="{{asset('css/targlo/css/style.css')}}"/>
@@ -27,6 +28,17 @@
 
     <header class="header-section">
 		<div class="upper-header">
+
+            @if (JWTAuth::user())
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <form action="Logout" method="post" class="logout">
+                <input type="hidden" name="token" value={{ $token }} >
+                <input type="submit" value="Logout">
+                @csrf
+            </form>
+            @endif
+
+            <a href="/api/Login/view"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
 		  <a href=""><i class="fa fa-envelope" aria-hidden="true"></i>www.targlo.com</a>
 		  <a href=""><i class="fa fa-phone" aria-hidden="true"></i>444 444 4444</a>
 		</div>
@@ -54,34 +66,20 @@
 					<div class="container-fluid">
 					  <div class="row">
 
-					  <div class="col-12 col-md-4  py-sm-4 py-0 text-sm-center">
+                    @for ($i = 0; $i <count($indus); $i++)
+                    <div class="col-12 col-md-4  py-sm-4 py-0 text-sm-center">
 						<ul>
-						  <li><a href="">Agriculture</a></li>
-						  <li><a href="">Automotive And Transport</a></li>
-						  <li><a href="">Aviation</a></li>
-						  <li><a href="">Food And Beverage</a></li>
-						  <li><a href="">Healthcare</a></li>
+
+						  <li><a href="/report/{{$indus[$i]->Meta_Title }}">{{ $indus[$i]->Meta_Title}}</a></li>
+
+
 						</ul>
 
-					  </div>
-					  <div class="col-12 col-md-4 py-sm-4 py-0 text-sm-center">
-						<ul>
-						  <li><a href="">Biotechnology</a></li>
-						  <li><a href="">Chemical And Materials</a></li>
-						  <li><a href="">Construction</a></li>
-						  <li><a href="">Heavy Industry</a></li>
-						  <li><a href="">Medical Device</a></li>
-						</ul>
-					  </div>
-					  <div class="col-12 col-md-4 py-sm-4 py-0 text-sm-center">
-						<ul>
-						  <li><a href="">Consumer Goods</a></li>
-						  <li><a href="">Defense</a></li>
-						  <li><a href="">Energy And Mining</a></li>
-						  <li><a href="">Packaging</a></li>
-						  <li><a href="">Pharmaceutical</a></li>
-						</ul>
-					  </div>
+                    </div>
+                    @endfor
+
+
+
 					</div>
 					</div>
 				  </div>

@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('Register/view',[App\Http\Controllers\AuthenticationController::class,'registerView']);
 Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'register']);
 Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
-Route::post('verify',[App\Http\Controllers\AuthenticationController::class,'verification']);
+Route::any('verify',[App\Http\Controllers\AuthenticationController::class,'verification']);
 Route::get('verifyemail',[App\Http\Controllers\AuthenticationController::class,'verifyemail']);
 
 Route::get('Login/view',[App\Http\Controllers\AuthenticationController::class,'loginView']);

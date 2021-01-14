@@ -3,6 +3,7 @@
 @section('content')
 
 
+
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="container">

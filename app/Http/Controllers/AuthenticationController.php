@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Authentication;
+use App\Models\Admin;
 use Tymon\JWTAuth\Facades\JWTAuth ;
 use Twilio\Rest\Client;
 use Twilio\Rest\TwilioException;
@@ -150,6 +151,7 @@ else{
         $twilio->verify->v2->services($twilio_verify_sid)
         ->verifications
         ->create($request->verification_method,"sms");
+         //return redirect()->back();
         return view('Auth.verifycode',['phone'=>$request->verification_method]);
         //return response()->json(["status"=>1,'Message'=>"OTP Sent!Please Check phone and Verify Your Account ",'Data'=>json_decode('{}'),'Respondcode'=>"APP001"]);
 
@@ -205,8 +207,16 @@ else{
 
                      $report=tap(Authentication::where('email',$request->email))->update(['_token'=>$token]);
 
+                     $industry=Admin::select('Meta_Title')->get()->toArray();
+                     $find="Market Size, Share and Forecast";
+                     $indusname=[];
+                     for ($i=0; $i <count($industry) ; $i++) {
+                         $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+                     }
+                    $indus=json_decode(json_encode($indusname),False);
 
-                     return view('Auth.profile',['token'=>$token]);
+                     return view('targlo.main',['token'=>$token,'indus'=>$indus]);
+                     //return redirect('/')->with(['token'=>$token]);
 
                    // return response()->json(['status'=>1,'Message'=>'User Login Successsfully']);
 

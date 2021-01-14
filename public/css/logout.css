@@ -1,0 +1,12 @@
+.logout{
+position: absolute;
+}
+input[type="submit"]
+{
+    position: absolute;
+    width: 70px;
+left:789px;
+top:-25px;
+    background-color: transparent;
+}
+

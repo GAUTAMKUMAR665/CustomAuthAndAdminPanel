@@ -6,164 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
     <style href="{{asset('css/register.css')}}" rel="stylesheet"></style>
-    <style>
-        :root{
-    --main-bg-color:#ecf0f3
-}
-
-body{
-    background-color: var(--main-bg-color);
-    height: 100%;
-    width: 100%;
-}
-        .container{
-    position: fixed;
-    height: 550px;
-    width:350px;
-    left:500px;
-    margin: auto;
-    padding:2rem ;
-    border-radius:2.5rem ;
-    background-color: var(--main-bg-color);
-    box-shadow: 13px 13px 20px #cbced1,
-            -13px -13px 20px #ffffff;
-}
-.logo{
-display: flex;
-position: relative;
-left:130px;
-margin-bottom: 20px;
-width: 100%;
-}
-.logo_circle{
-display: flex;
-width: 100px;
-height: 100px;
-background-color: #e9d985;
-border-radius: 50%;
-box-shadow: 0px 0px 2px #5f5f5f,
-0px 0px 0px 5px #ecf0f3,
-8px 8px 15px #a7aaaf,
--8px -8px 15px #ffffff
-}
-.logo_img{
-margin: auto,
-
-opacity:0.4,
-}
-.form_group{
-width: 400px;
-height: 600px;
-margin-bottom: 32px;
-}
- .form_input{
-      appearance: none;
-	border: none;
-	 background-color: transparent;
-	 font-size: 0.875rem;
-	 padding: 16px;
-	padding-left: 40px;
- 	width: 300px;
- 	border-radius: 24px;
-	box-shadow:
-		inset 8px 8px 8px #CBCED1,
-		inset -8px -8px 8px #FFFFFF;
-
-}
-/* .form_input{
-    appearance: none;
-	border: none;
-	background-color: transparent;
-	font-size: 0.875rem;
-	padding: 1rem;
-	padding-left: 2.5rem;
-	width: 100%;
-	border-radius: 1.5rem;
-	box-shadow:
-		inset 8px 8px 8px #CBCED1,
-		inset -8px -8px 8px #FFFFFF;
-} */
-.form_input:focus{
-outline: none;
-box-shadow:
-inset 8px 8px 8px #c5c5c5,
-inset -8px -8px -8px #ffffff
-}
-.form_input::placeholder{
-    color: #d3d3d3;
-	letter-spacing: 0.15em;
-}
-.form_input:focus::placeholder
-{
-    color: #CCCCCC;
-}
-.form_button {
-position: relative;
-height:50px;
-width:150px;
-top:40px;
-left:0px;
-background-color: blue;
-border-radius:20px;
-}
-.form_button:focus{
-outline:none;
-}
-label[for="name"]{
-    position: relative;
-    left:20px;
-    color: #635e5e;
-	letter-spacing: 0.15em;
-}
-label[for="email"]{
-    position: relative;
-    left:20px;
-    color: #635e5e;
-	letter-spacing: 0.15em;
-}
-label[for="phone"]{
-    position: relative;
-    left:20px;
-    color: #635e5e;
-	letter-spacing: 0.15em;
-}
-label[for="password"]{
-    position: relative;
-    left:20px;
-    color: #635e5e;
-	letter-spacing: 0.15em;
-}
-label[for="cofirmpassword"]{
-    position: relative;
-    left:20px;
-    color: #635e5e;
-	letter-spacing: 0.15em;
-}
- label[for="verification_method"]{
-    position: relative;
-    height: 20px;
-    width:30px;
-    left:17px;
-    top:5px;
-    color: #635e5e;
-	letter-spacing: 0.15em;
-
-}
-select{
-    position: relative;
-      height: 20px;
-    width:100px;
-    left:17px;
-    top:0px;
-    z-index: 100;
-}
-
-
-
-
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>
+                <a href="#">
+                    <img src="http://tfgms.com/sandbox/dailyui/logo-1.png" alt="Authentication Targlo">
+                </a>
+            </h1>
+        </header>
+        <h1 class="text-center">Register</h1>
+        <form class="registration-form" action="/api/Register" method="post">
+            <label class="col-one-half">
+                <span class="label-text">Name</span>
+                <input type="text" name="name" autocomplete="false">
+            </label>
+            <label class="col-one-half">
+                <span class="label-text">Email</span>
+                <input type="text" name="email" autocomplete="false">
+            </label>
+            <label>
+                <span class="label-text">Phone</span>
+                <input type="text" name="phone">
+            </label>
+            <label class="password">
+                <span class="label-text">Password</span>
+                <button class="toggle-visibility" title="toggle password visibility" tabindex="-1">
+                    <span class="glyphicon glyphicon-eye-close"></span>
+                </button>
+                <input type="password" name="password" autocomplete="false">
+            </label>
+            <label class="password">
+                <span class="label-text">ConfirmPassword</span>
+                <button class="toggle-visibility" title="toggle password visibility" tabindex="-1">
+                    <span class="glyphicon glyphicon-eye-close"></span>
+                </button>
+                <input type="password" name="confirmpassword" >
+            </label>
+            <div class="text-center">
+                <button class="submit" name="register">Sign Me Up</button>
+            </div>
+            @csrf
+        </form>
+    </div>
+
+
+
+
+{{--
     <div class="container">
 <div class="logo">
     <div class="logo_circle">
@@ -199,6 +91,6 @@ select{
 
 @csrf
 </form >
-    </div>
+    </div> --}}
 </body>
 </html>
