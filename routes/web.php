@@ -38,5 +38,7 @@ Route::get('/service',[\App\Http\Controllers\Statics\frontend::class,'service'])
 Route::get('/report/{idustry}',[\App\Http\Controllers\Statics\frontend::class,'report']);
 Route::get('/aboutus',[\App\Http\Controllers\Statics\frontend::class,'about']);
 Route::get('/contactus',[\App\Http\Controllers\Statics\frontend::class,'contact']);
-Route::get('/payment',[\App\Http\Controllers\Statics\frontend::class,'payment']);
+Route::get('/payments',[\App\Http\Controllers\Statics\frontend::class,'payment']);
 Route::get('/panel', [\App\Http\Controllers\Statics\frontend::class,'panel']);
+Route::view('/payment','targlo.payment');
+Route::view('/payment2','payment');
