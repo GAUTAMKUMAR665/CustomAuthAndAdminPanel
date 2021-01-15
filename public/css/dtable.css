@@ -1,0 +1,19 @@
+.button{
+    position: absolute;
+    right:10px;
+    height:40px;
+    width: 150px;
+    font-size: large;
+    top:0px;
+}
+
+.data_table{
+    font-size: medium;
+}
+.edit{
+    font-size: medium;
+    margin: 2px;
+}
+.delete{
+    font-size: medium;
+}

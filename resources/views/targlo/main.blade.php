@@ -11,7 +11,8 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-	<!-- Stylesheets -->
+    <!-- Stylesheets -->
+    <link href="{{asset('css/report.css')}}">
 	<link rel="stylesheet" href="{{asset('css/targlo/css/bootstrap.min.css')}}"/>
 	<link rel="stylesheet" href="{{asset('css/targlo/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/targlo/css/themify-icons.css')}}"/>
@@ -106,7 +107,9 @@
 		  </header>
 		<!-- Header section end -->
 	<main>
+
         @yield('content')
+
     </main>
 
 

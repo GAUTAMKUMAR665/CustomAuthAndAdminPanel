@@ -1,4 +1,4 @@
-@extends('Admin.home')
+@extends('Admin.adminPanel')
 
 @section('content')
 

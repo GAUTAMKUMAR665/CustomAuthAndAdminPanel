@@ -23,8 +23,6 @@
                 <span class="label-text">Name</span>
                 <input type="text" name="name" autocomplete="false">
             </label>
-
-
             <label class="col-one-half">
                 <span class="label-text">Email</span>
                 <input type="text" name="email" autocomplete="false">
@@ -56,43 +54,5 @@
 
 
 
-
-{{--
-    <div class="container">
-<div class="logo">
-    <div class="logo_circle">
-        <div class="logo_svg"></div>
-    </div>
-</div>
-<form  action="/api/Register" method="post">
-    <div class="form_group">
-
-        <label  for="name">Name</label>
-        <div class="inputs">
-            <input type="text" id="name" name="name" class="form_input" placeholder="Please Enter Your Name">
-        </div>
-
-        <label  for="email">Email</label>
-        <div class="inputs">
-            <input type="text" id="email" name="email" class="form_input" placeholder="Please Enter Your Email">
-        </div>
-        <label  for="phone">Phone</label>
-        <div class="inputs">
-            <input type="text" id="phone" name="phone" class="form_input" placeholder="Please Enter Your Phone">
-        </div>
-        <label  for="password">Password</label>
-        <div class="inputs">
-            <input type="text" id="password" name="password" class="form_input" placeholder="Please Enter Your Password">
-        </div>
-        <label  for="cofirmpassword">Confirmpassword</label>
-        <div class="inputs">
-            <input type="text" id="cofirmpassword" name="confirmpassword" class="form_input" placeholder="Please ReEnter Your Password">
-        </div>
-
-    <input type="submit" id="submit" class="form_button" value="submit">
-
-@csrf
-</form >
-    </div> --}}
 </body>
 </html>

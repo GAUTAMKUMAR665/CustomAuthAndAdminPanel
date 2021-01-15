@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('Register/view',[App\Http\Controllers\AuthenticationController::class,'registerView']);
+Route::get('Register/view',[App\Http\Controllers\AuthenticationController::class,'registerView'])->name('Register');
 Route::post('Register',[App\Http\Controllers\AuthenticationController::class,'register']);
 Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
 Route::any('verify',[App\Http\Controllers\AuthenticationController::class,'verification']);
@@ -74,10 +74,35 @@ Route::get('add/publiser',[\App\Http\Controllers\Admin\Publisher::class,'addform
 Route::post('add/publiser',[\App\Http\Controllers\Admin\Publisher::class,'add']);
 Route::post('delete/publiser',[\App\Http\Controllers\Admin\Publisher::class,'delete']);
 
+###############################################################################################################################################
+
+Route::get('view/user',[\App\Http\Controllers\Admin\Userscontroller::class,'view']);
+Route::get('edit/user/{id}',[\App\Http\Controllers\Admin\Userscontroller::class,'editform'])->name('edit/publiser');
+Route::post('edit/user',[\App\Http\Controllers\Admin\Userscontroller::class,'edit']);
+Route::get('add/user',[\App\Http\Controllers\Admin\Userscontroller::class,'addform']);
+Route::post('add/user',[\App\Http\Controllers\Admin\Userscontroller::class,'add']);
+Route::post('delete/user',[\App\Http\Controllers\Admin\Userscontroller::class,'delete']);
+
+#############################################################################################################################
+
+Route::get('superadmin/register',[\App\Http\Controllers\SuperadminController::class,'register']);
+Route::get('superadmin/register/store',[\App\Http\Controllers\SuperadminController::class,'registerstore']);
+Route::get('superadmin/login',[\App\Http\Controllers\SuperadminController::class,'login']);
+Route::get('superadmin/login/store',[\App\Http\Controllers\SuperadminController::class,'loginstore']);
+Route::get('superadmin/otp',[\App\Http\Controllers\SuperadminController::class,'login']);
+Route::get('superadmin/verifyotp',[\App\Http\Controllers\SuperadminController::class,'verify']);
 
 
+#########################################################################################################################
 
+Route::get('admin/register',[\App\Http\Controllers\AdminauthController::class,'register']);
+Route::get('admin/register/store',[\App\Http\Controllers\AdminauthController::class,'registerstore']);
+Route::get('admin/login',[\App\Http\Controllers\AdminauthController::class,'login']);
+Route::get('admin/login/store',[\App\Http\Controllers\AdminauthController::class,'loginstore']);
+Route::get('admin/otp',[\App\Http\Controllers\AdminauthController::class,'login']);
+Route::get('admin/verifyotp',[\App\Http\Controllers\AdminauthController::class,'verify']);
 
+##########################################################################################################################
 Route::get('Usersdata',[App\Http\Controllers\Userscontroller::class,'data']);
 
 

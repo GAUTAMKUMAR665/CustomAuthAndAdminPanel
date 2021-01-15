@@ -98,11 +98,33 @@ class frontend extends Controller
    }
    public function panel()
    {
+
        return view('Admin.AdminPanel');
    }
 
    public function payment()
    {
        return view('targlo.payment');
+   }
+
+   public function toc($toc){
+
+//dd($toc);
+
+$mtoc=Admin::where('Meta_Title',$toc)->pluck('Table_of_Content');
+//dd($mtoc);
+$toca=[];
+//$toca=str_split($mtoc);
+//dd($toca);
+/*  $find=["<b>"];
+for ($i=0; $i <100 ; $i++) {
+    $br=$i.":";
+    $ntoc=str_ireplace($find,$br,$mtoc);
+} */
+$seprator="\n";
+$newstr=strtok($mtoc,$seprator);
+
+
+dd($newstr);
    }
 }

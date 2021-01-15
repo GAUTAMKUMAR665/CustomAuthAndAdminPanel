@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+
 use Illuminate\Support\Str;
 
 
@@ -84,8 +86,10 @@ class AuthenticationController extends Controller
 
                 $message['confirmpassword']=$errors->confirmpassword[0];
            }
-
-           return response()->json(['status'=>0,'message'=>$message,'data'=>json_decode("{}")]);
+           return Redirect::route('Register')->withErrors($message)->withInput();
+         // return redirect('/api/Register/view')->withErrors(['message'=>$message]);
+          // return back()->withErrors(['status'=>0,'message'=>$message,'data'=>json_decode("{}")]);
+          // return response()->json(['status'=>0,'message'=>$message,'data'=>json_decode("{}")]);
        }
        else{
 

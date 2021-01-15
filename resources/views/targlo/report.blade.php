@@ -2,12 +2,34 @@
 
 @section('content')
     <!-- report content section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+
+.toc{
+    color: aqua;
+}
+ h2{
+    color: blue
+}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
 @foreach ($report as $reports)
 <section class="reports-section spad">
     <div class="container">
         <h4 class="mb-3">{{ $reports->Title }}</h4>
         <div class="row">
             <div class="col-md-8">
+
                 <button type="button" class="btn btn-primary">
                     Published Date <span class="badge badge-light">{{ $reports->Date_Published }}</span>
                     <span class="sr-only">unread messages</span>
@@ -42,7 +64,8 @@
                             <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Report description</a>
                         </li>
                         <li role="presentation" class="">
-                            <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Table of Content</a>
+
+                        <a href="/toc/{{ $reports->Meta_Title }}" >Table of Content</a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Request Sample</a>
@@ -67,15 +90,17 @@
                         </div>
 
                         <div class="panel-heading" role="tab" id="heading2">
-                            <a href="#tab2" class="collapsed" role="button" data-toggle="collapse" data-parent="tabs-content"
+                            <a href="/toc/" class="collapsed" role="button" data-toggle="collapse" data-parent="tabs-content"
                                aria-expanded="true" aria-controls="tab2">Tab 2</a>
                         </div>
 
-                        <div id="tab2" role="tabpanel" class="tab-pane panel-collapse collapse" aria-labelledby="heading2">
-                            <p>
+
+
+                       {{--  <div id="tab2" role="tabpanel" class="tab-pane panel-collapse collapse" aria-labelledby="heading2">
+                            <p class="toc" >
                               {!! $reports->Table_of_Content !!}
                                </p>
-                        </div>
+                        </div> --}}
 
                         <div class="panel-heading" role="tab" id="heading3">
                             <a href="#tab3" class="collapsed" role="button" data-toggle="collapse" data-parent="tabs-content"
