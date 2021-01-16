@@ -1065,10 +1065,11 @@ margin: 5px;;
 	.page-info-section {
 		background-position: right 23% top;
 	}
-	/* .about-img {
-		left: 0px;
+	 .about-img img {
+        position: relative;
+        height: 200px;
 		width: 480px;
-	} */
+	}
 	.member {
 		width: calc(33.333333% - 25px);
 		margin-bottom: 30px;

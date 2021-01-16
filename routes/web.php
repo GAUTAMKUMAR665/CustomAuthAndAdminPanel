@@ -34,10 +34,13 @@ Route::get('/token',function()
 Route::get('/',[\App\Http\Controllers\Statics\frontend::class,'main']);
 Route::get('/index',[\App\Http\Controllers\Statics\frontend::class,'index']);
 Route::get('/industry',[\App\Http\Controllers\Statics\frontend::class,'industry']);
+Route::post('/industry/search/',[\App\Http\Controllers\Statics\frontend::class,'industrysearch']);
+
 Route::get('/service',[\App\Http\Controllers\Statics\frontend::class,'service']);
 Route::get('/report/{idustry}',[\App\Http\Controllers\Statics\frontend::class,'report']);
 Route::get('/aboutus',[\App\Http\Controllers\Statics\frontend::class,'about']);
 Route::get('/contactus',[\App\Http\Controllers\Statics\frontend::class,'contact']);
+Route::post('/contact/store',[\App\Http\Controllers\Statics\frontend::class,'contactstore']);
 Route::get('/payments',[\App\Http\Controllers\Statics\frontend::class,'payment']);
 Route::get('/panel', [\App\Http\Controllers\Statics\frontend::class,'panel']);
 Route::get('/toc/{toc}', [\App\Http\Controllers\Statics\frontend::class,'toc']);

@@ -63,15 +63,16 @@
 				  <a class="nav-link dropdown-toggle" href="/industry" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Industry
 				</a>
-				  <div class="dropdown-menu rounded-0 bg-light w-100 border-0 m-0 p-0 shadow-sm" aria-labelledby="navbarDropdown">
+				  <div class="dropdown-menu rounded-0 bg-light w-100  border-0 m-0 p-0 shadow-sm" aria-labelledby="navbarDropdown">
 					<div class="container-fluid">
-					  <div class="row">
+
+					  <div class="row" >
 
                     @for ($i = 0; $i <count($indus); $i++)
-                    <div class="col-12 col-md-4  py-sm-4 py-0 text-sm-center">
-						<ul>
+                    <div class="col-12 col-md-4  py-sm-4 py-0 text-sm-center" >
+						<ul class="ulindus">
 
-						  <li><a href="/report/{{$indus[$i]->Meta_Title }}">{{ $indus[$i]->Meta_Title}}</a></li>
+						  <li class="industry"><a href="/report/{{$indus[$i]->Meta_Title }}">{{ $indus[$i]->Meta_Title}}</a></li>
 
 
 						</ul>
@@ -95,9 +96,10 @@
 				  <a class="nav-link " href="/contactus">Contact</a>
 				</li>
 			  </ul>
-			  <form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+			  <form class="form-inline my-2 my-lg-0" action="/industry/search" method="post">
+				<input class="form-control mr-sm-2 searchin" type="search" placeholder="Search" aria-label="Search" name="industry">
+                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                @csrf
 			  </form>
 
 		  </div>
@@ -200,5 +202,48 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<!-- slick slider js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+    <script>
+        $(function(){
+
+
+          $('.searchin').on('keyup',function()
+          {
+            $('.dropdown-menu').toggle();
+
+            var inserch=$('.searchin').val().trim();
+
+            var ulind=$('.ulindus');
+
+            if(inserch!='')
+            {
+
+                $('.ulindus').children('li').hide();
+                $('.ulindus').children('li').filter(function()
+                {
+                    if(inserch==$(this).text())
+                    {
+                        $('.dropdown-menu').css("height","70px");
+                        var sfound=$(this).insertAfter($('.ulindus').children('li:first'));
+                        console.log($(this).text());
+                        console.log($(this).index());
+                    return sfound;
+                    }
+
+                }).show();
+            }
+            else{
+                window.location.reload();
+               /*  $('.dropdown-menu').css("height","auto");
+                $('.ulindus').children('li').show(); */
+            }
+
+            //alert(inserch);
+          })
+
+
+
+        })
+    </script>
 </body>
 </html>

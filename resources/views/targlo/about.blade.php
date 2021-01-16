@@ -20,14 +20,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 about-text">
-					<h2>What is Bitcoin</h2>
-					<h5>Bitcoin is an innovative payment network and a new kind of money.</h5>
-					<p>Bitcoin is one of the most important inventions in all of human history. For the first time ever, anyone can send or receive any amount of money with anyone else, anywhere on the planet, conveniently and without restriction. It’s the dawn of a better, more free world.</p>
+					<h2>What is Targlo</h2>
+					<h5>Targlo is a Research is a market intelligence platform</h5>
+					<p>Targlo Research is a market intelligence platform which gives access to syndicated, customised reports and consulting to its clients at one place. As a firm with rich experience in research and consulting across multiple domains we are one stop solution that will cater to the needs of clients in key business areas. Our company has an online platform whose coverage includes industries such as Chemicals and Materials, Agriculture, Health care services, Animal feed and food & beverages among others. Our platform has Insights on markets that uncover latest market research data that’s distinct from the competition. With coverage across 10 major industries in the marketplace research, Targlo benefits thousands of companies by helping them take their innovations early to the market by providing a complete view of the market with statistical forecasts. Our strategy centric framework and value-added services will let individuals and corporates with ease of access and custom personalization to research and markets.
+                    </p>
 					<a href="" class="site-btn sb-gradients sbg-line mt-5">Get Started</a>
 				</div>
 
 				<div class="about-img col-md-6">
-					<img src="{{ asset('css/targlo/img/about-img.png') }}" alt="">
+					<img src="{{ asset('css\targlo\img\software-research-development-labs.png') }}" alt=""  style="height:400px;top:150px;position: relative;">
 				</div>
 		    </div>
 		</div>
@@ -35,62 +36,78 @@
 	<!-- About section end -->
 
 
-	<!-- Fact section -->
-	<section class="fact-section gradient-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="fact">
-						<h2>60</h2>
-						<p>Support <br> Countries</p>
-						<i class="ti-basketball"></i>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="fact">
-						<h2>12K</h2>
-						<p>Transactions  <br> per hour</p>
-						<i class="ti-panel"></i>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="fact">
-						<h2>5B</h2>
-						<p>Largest <br> Transactions</p>
-						<i class="ti-stats-up"></i>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="fact">
-						<h2>240</h2>
-						<p>Years <br> of Experience</p>
-						<i class="ti-user"></i>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Fact section end -->
-
 
 	<!-- About section -->
 	<section class="about-section spad">
 		<div class="container">
 			<div class="row">
-				<div class="about-img col-md-6">
-					<img src="{{ asset('css/targlo/img/about-img.png') }}" alt="">
+				<div class="about-img col-md-14">
+					<img src="{{ asset('css\targlo\img\Slide1.png') }}" alt="" style="object-fit: cover;height:700px;width:1750px;border:none;position:relative;left:10px;top:-110px;">
 				</div>
-				<div class="col-md-6 about-text">
-					<h2>What is Bitcoin</h2>
-					<h5>Bitcoin is an innovative payment network and a new kind of money.</h5>
-					<p>Bitcoin is one of the most important inventions in all of human history. For the first time ever, anyone can send or receive any amount of money with anyone else, anywhere on the planet, conveniently and without restriction. It’s the dawn of a better, more free world.</p>
-					<a href="" class="site-btn sb-gradients sbg-line mt-5">Get Started</a>
-				</div>
+
 
 			</div>
 
-		</div>
+        </div>
+        <div>
+
+        </div>
+        <div class="container">
+			<div class="row">
+				<div class="about-img col-md-14">
+					<img src="{{ asset('css\targlo\img\Slide2.png') }}" alt="" style="object-fit: cover;height:600px;width:1550px;border:none;position:relative;left:10px;top:-110px;">
+				</div>
+
+
+			</div>
+
+        </div>
+        <div>
+
+        </div>
+        <div class="container">
+			<div class="row">
+				<div class="about-img col-md-14">
+					<img src="{{ asset('css\targlo\img\Slide3.png') }}" alt="" style="object-fit: cover;height:600px;width:1550px;border:none;position:relative;left:10px;top:-110px;">
+				</div>
+
+
+			</div>
+
+        </div>
+        <div>
+
+        </div>
+        <div class="container">
+			<div class="row">
+				<div class="about-img col-md-14">
+					<img src="{{ asset('css\targlo\img\Slide4.png') }}" alt="" style="object-fit: cover;height:600px;width:1550px;border:none;position:relative;left:10px;top:-110px;">
+				</div>
+
+
+			</div>
+
+        </div>
+        <div>
+
+        </div>
+        <div class="container">
+			<div class="row">
+				<div class="about-img col-md-14">
+					<img src="{{ asset('css\targlo\img\Slide5.png') }}" alt="" style="object-fit: cover;height:600px;width:1550px;border:none;position:relative;left:10px;top:-110px;">
+				</div>
+
+
+			</div>
+
+        </div>
+        <div>
+
+        </div>
 	</section>
-	<!-- About section end -->
+    <!-- About section end -->
+
+
+
 
 @endsection
