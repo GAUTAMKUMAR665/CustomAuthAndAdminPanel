@@ -184,6 +184,11 @@ $message=[];
 
        return view('Admin.sessydrop');
    }
+   public function contact2()
+   {
+
+       return view('targlo.contactus');
+   }
    public function panel()
    {
 
