@@ -43,6 +43,8 @@ Route::get('/contactus',[\App\Http\Controllers\Statics\frontend::class,'contact'
 Route::post('/contact/store',[\App\Http\Controllers\Statics\frontend::class,'contactstore']);
 Route::get('/payments',[\App\Http\Controllers\Statics\frontend::class,'payment']);
 Route::get('/panel', [\App\Http\Controllers\Statics\frontend::class,'panel']);
+Route::get('/sessy', [\App\Http\Controllers\Statics\frontend::class,'sessy']);
+Route::get('/panel2', [\App\Http\Controllers\Statics\frontend::class,'panel2']);
 Route::get('/toc/{toc}', [\App\Http\Controllers\Statics\frontend::class,'toc']);
 Route::view('/payment','targlo.payment');
 Route::view('/payment2','payment');

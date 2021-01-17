@@ -174,6 +174,16 @@ $message=[];
 
        return view('targlo.contact',['indus'=> $indus]);
    }
+   public function panel2()
+   {
+
+       return view('Admin.Panel');
+   }
+   public function sessy()
+   {
+
+       return view('Admin.sessydrop');
+   }
    public function panel()
    {
 
