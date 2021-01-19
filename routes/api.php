@@ -47,7 +47,7 @@ Route::post('Deletedata',[\App\Http\Controllers\AdminController::class,'delete']
 ############################################################################################################################
 
 Route::get('view/report',[\App\Http\Controllers\Admin\Report::class,'view']);
-Route::get('edit/report/{id}',[\App\Http\Controllers\Admin\Report::class,'editform']);
+Route::get('edit/report/{id}',[\App\Http\Controllers\Admin\Report::class,'editform'])->name('edit/report');
 Route::post('edit/report',[\App\Http\Controllers\Admin\Report::class,'edit']);
 Route::get('add/report',[\App\Http\Controllers\Admin\Report::class,'addform']);
 Route::post('add/reports',[\App\Http\Controllers\Admin\Report::class,'add']);

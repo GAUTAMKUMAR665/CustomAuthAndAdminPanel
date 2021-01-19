@@ -22,7 +22,7 @@ class Report extends Controller
                return DataTables::of($data)
                ->addIndexColumn()
                ->addColumn(function($row){
-                   $btn="<a href='".route('',$row->id)."' class='edit btn btn-primary'>Edit</a>";
+                   $btn="<a href='".route('/api/edit/report',$row->id)."' class='edit btn btn-primary'>Edit</a>";
                    $btn=$btn."<a href='".route('',$row->id)."' class='delete btn btn-danger'>Danger</a>";
 
                    return $btn;
