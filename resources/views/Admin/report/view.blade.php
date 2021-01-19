@@ -1,7 +1,7 @@
 @extends('Admin.adminPanel')
 
 @section('content')
-<a href="/api/add/report"
+<a href="/api/add/publiser"
     class="py-2 pl-5 pr-6 mr-3 flex items-center flex-shrink-0 bg-purple-600 rounded-lg text-white text-sm font-semibold hover:bg-purple-700 button"
   >
     <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 mr-2">
@@ -19,10 +19,15 @@
 <thead>
 <tr>
     <th>Id</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Message</th>
+    <th>Catogery_Id</th>
+    <th>Publisher_Id</th>
+    <th>Report_Type</th>
+    <th>Key_Player</th>
+    <th>Single_User_Amount</th>
+    <th>Multi_User_Amount</th>
+    <th>Enterprise_Amount</th>
+    <th>Meta_Title</th>
+    <th>Meta_Description</th>
     <th>Action</th>
 </tr>
 </thead>
@@ -31,10 +36,15 @@
 </tbody>
 <tfoot>
     <th>Id</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Message</th>
+    <th>Catogery_Id</th>
+    <th>Publisher_Id</th>
+    <th>Report_Type</th>
+    <th>Key_Player</th>
+    <th>Single_User_Amount</th>
+    <th>Multi_User_Amount</th>
+    <th>Enterprise_Amount</th>
+    <th>Meta_Title</th>
+    <th>Meta_Description</th>
     <th>Action</th>
 
 </tfoot>
@@ -49,7 +59,7 @@ $(function()
         processing:true,
         serverSide:true,
         paging:true,
-        ajax:"{{url('/')}}/api/view/publiser",
+        ajax:"{{url('/')}}/api/view/report",
         columns:[
 
             {
@@ -61,35 +71,75 @@ $(function()
                 }
             },
             {
-                'data':'Name',
+                'data':'Catogery_Id',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.name;
+                    return row.Category_Id;
                 }
             },
             {
-                'data':'Email',
+                'data':'Publisher_Id',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.email;
+                    return row.Publisher_Id;
                 }
             },
             {
-                'data':'phone',
+                'data':'Report_Type',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.phone;
+                    return row.Report_Type;
                 }
             },
             {
-                'data':'Message',
+                'data':'key_player',
                 'className':'',
                 'render':function(data,type,row)
                 {
-                    return row.message;
+                    return row.key_player;
+                }
+            },
+            {
+                'data':'Single_User_Amount',
+                'className':'',
+                'render':function(data,type,row)
+                {
+                    return row.Single_User_Amount;
+                }
+            },
+            {
+                'data':'Multi_User_Amount',
+                'className':'',
+                'render':function(data,type,row)
+                {
+                    return row.Multi_User_Amount;
+                }
+            },
+            {
+                'data':'Enterprise_Amount',
+                'className':'',
+                'render':function(data,type,row)
+                {
+                    return row.Enterprise_Amount;
+                }
+            },
+            {
+                'data':'Meta_Title',
+                'className':'',
+                'render':function(data,type,row)
+                {
+                    return row.Meta_Title;
+                }
+            },
+            {
+                'data':'Meta_Description',
+                'className':'',
+                'render':function(data,type,row)
+                {
+                    return row.Meta_Description;
                 }
             },
             {

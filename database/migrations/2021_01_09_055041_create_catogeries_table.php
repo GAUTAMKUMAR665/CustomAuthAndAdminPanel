@@ -15,6 +15,9 @@ class CreateCatogeriesTable extends Migration
     {
         Schema::create('catogeries', function (Blueprint $table) {
             $table->id();
+            $table->string('catogery_id');
+            $table->string('catogery_name');
+            $table->string('catogery_slug')->nullable();
             $table->timestamps();
         });
     }

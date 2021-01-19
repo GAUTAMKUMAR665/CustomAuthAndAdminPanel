@@ -32,14 +32,16 @@
 </head>
 <body>
     <form action="/api/add/publiser" method="post">
+        <label for="publisher_id">Publisher_Id</label>
+        <input type="text" name="publisher_id" id="publisher_id" >
         <label for="name">NAME</label>
         <input type="text" name="name" id="name" >
         <label for="email">EMAIL</label>
         <input type="text" name="email" id="email" >
         <label for="phone">Phone</label>
         <input type="text" name="phone" id="phoneL" >
-        <label for="message">Message</label>
-        <textarea  name="message" id="message"  rows="4"></textarea>
+        <label for="url">URL</label>
+        <input  name="url" id="url"></input>
 
         <input type="submit" value="submit" >
 @csrf

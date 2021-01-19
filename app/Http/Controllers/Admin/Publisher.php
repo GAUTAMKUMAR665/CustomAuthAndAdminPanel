@@ -27,7 +27,7 @@ class Publisher extends Controller
             ->rawColumns(['action'])
             ->make(true);
         }
-           return view('Admin.report.view');
+           return view('Admin.publisher.view');
 
     }
     public function editform($id)
@@ -39,10 +39,11 @@ class Publisher extends Controller
     public function edit(Request $request)
     {
         $validator=Validator::make($request->all(),[
+            'publisher_id'=>"required",
             'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required',
-            'Message'=>'required'
+            'url'=>'required'
         ]);
 
         if($validator->fails())
@@ -52,10 +53,11 @@ class Publisher extends Controller
         }
         else{
             $pub=new AdminPublisher();
+            $pub->publisher_id=$request->publisher_id;
             $pub->name=$request->name;
             $pub->email=$request->email;
             $pub->phone=$request->phone;
-            $pub->message=$request->message;
+            $pub->url=$request->url;
             $pub->save();
 
             return response()->json(['status'=>0,'Message'=>'Publisher Added']);
@@ -70,11 +72,11 @@ class Publisher extends Controller
     public function add(Request $request)
     {
         $validator=Validator::make($request->all(),[
-
+            'publisher_id'=>'required',
             'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required',
-            'message'=>'required'
+            'url'=>'required'
         ]);
 
         if($validator->fails())
@@ -84,10 +86,11 @@ class Publisher extends Controller
         }
         else{
             $pub=new AdminPublisher();
+            $pub->publisher_id=$request->publisher_id;
             $pub->name=$request->name;
             $pub->email=$request->email;
             $pub->phone=$request->phone;
-            $pub->message=$request->message;
+            $pub->url=$request->url;
             $pub->save();
 
             return response()->json(['status'=>0,'Message'=>'Publisher Added']);

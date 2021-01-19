@@ -49,3 +49,4 @@ Route::get('/contact2', [\App\Http\Controllers\Statics\frontend::class,'contact2
 Route::get('/toc/{toc}', [\App\Http\Controllers\Statics\frontend::class,'toc']);
 Route::view('/payment','targlo.payment');
 Route::view('/payment2','payment');
+Route::get('/reports',[\App\Http\Controllers\Statics\frontend::class,'reports']);

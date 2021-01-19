@@ -22,7 +22,9 @@
     <thead>
 <tr>
     <th>ID</th>
+    <th>Catogery Id</th>
     <th>Catogery Name</th>
+    <th>Catogery Slug</th>
     <th>Added Date</th>
     <th>Modified Date</th>
     <th>Action</th>
@@ -34,7 +36,9 @@
     </tbody>
     <tfoot>
         <th>ID</th>
+        <th>Catogery Id</th>
         <th>Catogery Name</th>
+        <th>Catogery Slug</th>
         <th>Added Date</th>
         <th>Modified Date</th>
         <th>Action</th>
@@ -60,11 +64,27 @@ $(function(){
                }
             },
             {
-               " data":"Catogery Name",
+               " data":"Catogery ID",
                "className":"",
                "render":function(data,type,row)
                {
-                   return row.Meta_Title;
+                   return row.catogery_id;
+               }
+            },
+            {
+               " data":"Catogery NAME",
+               "className":"",
+               "render":function(data,type,row)
+               {
+                   return row.catogery_name;
+               }
+            },
+            {
+               " data":"Catogery Slug",
+               "className":"",
+               "render":function(data,type,row)
+               {
+                   return row.catogery_slug;
                }
             },
             {
@@ -89,8 +109,6 @@ $(function(){
                "className":"",
                "render":function(data,type,row)
                {
-                   //$EDbutton='<a class="btn btn-primary edit" href="{{ url('/') }}/api/edit/catogery/'+row.id+'">Edit</a> <a class="btn btn-danger" href="javascript:void(0)" onclick=deleteData('+row.id+')>Delete</a>';
-                   //var buttonHtml = '<a class="btn btn-primary" href="{{ url('/') }}/api/edit/report/'+row.id+'">Edit</a>$nbsp;$nbsp;<a class="btn btn-danger" href="javascript:void(0);" onclick="deleteData('+row.id+')">Delete</a>';
                    return row.action;
                }
             },

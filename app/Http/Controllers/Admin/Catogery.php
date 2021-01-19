@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
-use App\Models\Admin;
+
+use App\Models\Admin\Catogery as Catogerylist;
+
+
 
 use Illuminate\Support\Facades\Validator;
 
@@ -13,7 +16,7 @@ class Catogery extends Controller
 {
     public function view(Request $request)
     {
-        $data=Admin::select('*');
+        $data=Catogerylist::select('*');
 
       if($request->ajax())
       {
@@ -36,13 +39,15 @@ class Catogery extends Controller
     }
     public function editform($id)
     {
-        $report=Admin::where('id',$id)->get();
+        $report=Catogerylist::where('id',$id)->get();
            return view('Admin.catogery.edit',['report'=>$report[0]]);
     }
     public function edit(Request $request)
     {
         $validator=Validator::make($request->all(),[
-              'Meta_Title'=>'required',
+            "catogery_id"=>"required|unique:catogeries,catogery_id",
+            "catogery_name"=>"required|unique:catogeries,catogery_name",
+            "catogery_slug"=>"required|unique:catogeries,catogery_slug",
               'created_at'=>'required',
               'updated_at'=>'required',
         ]);
@@ -55,7 +60,7 @@ class Catogery extends Controller
         }
         else{
 
-            Admin::where('id',$request->id)->update(['Meta_Title'=>$request->Meta_Title,'created_at'=>$request->created_at,'updated_at'=>$request->updated_at]);
+            Catogerylist::where('id',$request->id)->update(['catogery_id'=>$request->catogery_id,'catogery_name'=>$request->catogery_name,'catogery_slug'=>$request->catogery_slug,'created_at'=>$request->created_at,'updated_at'=>$request->updated_at]);
 
             return response()->json(['status'=>0,'Message'=>'Catogery Update sucessful']);
 
@@ -70,11 +75,10 @@ class Catogery extends Controller
     public function add(Request $request)
     {
          $validator=Validator::make($request->all(),[
-        "Title"=>"required",
-        "Slug"=>"required",
-        "Description"=>"required",
-        "Meta_Title"=>"required",
-        "Meta_Description"=>"required",
+            "catogery_id"=>"required|unique:catogeries,catogery_id",
+            "catogery_name"=>"required|unique:catogeries,catogery_name",
+            "catogery_slug"=>"required|unique:catogeries,catogery_slug",
+
         ]);
         if($validator->fails())
         {
@@ -84,14 +88,11 @@ class Catogery extends Controller
         }
         else{
 
-            $report=new Admin();
-            $report->Title=$request->Title;
-            $report->Slug=$request->Slug;
-            $report->Description=$request->Description;
-            $report->Meta_Title=$request->Meta_Title;
-            $report->Meta_Description=$request->Meta_Description;
-            $report->Meta_Canonical=$request->Meta_Canonical;
-            $report->save();
+            $catogery=new Catogerylist();
+            $catogery->catogery_id=$request->catogery_id;
+            $catogery->catogery_name=$request->catogery_name;
+            $catogery->catogery_slug=$request->catogery_slug;
+            $catogery->save();
 
             return response()->json(['status'=>1,'Message'=>'Report successfully Added']);
 
@@ -111,7 +112,7 @@ class Catogery extends Controller
             return response()->json(['status'=>0,'Message'=>$errors]);
         }
         else{
-            admin::where('id',$request->id)->delete();
+            Catogerylist::where('id',$request->id)->delete();
         }
 
     }

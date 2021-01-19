@@ -17,21 +17,27 @@
 <table class="table table-bordered data_table">
     <thead>
 <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Id</th>
+    <th>Publisher_Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>URL</th>
+    <th>Action</th>
+
 </tr>
     </thead>
     <tbody>
 
     </tbody>
     <tfoot>
-
+        <th>Id</th>
+        <th>Publisher_Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>URL</th>
+        <th>Action</th>
     </tfoot>
 </table>
 
@@ -43,15 +49,54 @@ $(function(){
         processing:true,
         serverSide:true,
         paging:true,
-        ajax:"{{ url('/') }}/api/",
+        ajax:"{{ url('/') }}/api/view/publiser",
         columns:[
             {
-               " data":"",
+               " data":"Id",
                "className":"",
                "render":function(data,type,row)
                {
-                   return row.abc;
+                   return row.id;
                }
+            },
+            {
+                "data":"Publisher_Id",
+                "className":"",
+                "render":function(data,type,row){
+                    return row.publisher_id;
+                }
+            },
+            {
+                "data":"Name",
+                "Classname":"",
+                "render":function(data,type,row)
+                {
+                    return row.name;
+                }
+            },
+            {
+                "data":"Email",
+                "Classname":"",
+                "render":function(data,type,row)
+                {
+                    return row.email;
+                }
+            },
+            {
+                "data":"Phone",
+                "Classname":"",
+                "render":function(data,type,row)
+                {
+                    return row.phone;
+                }
+            },
+            {
+                "data":"URL",
+                "Classname":"",
+                "render":function(data,type,row)
+                {
+                    return row.url;
+                }
             },
 
             {
@@ -59,8 +104,7 @@ $(function(){
                "className":"",
                "render":function(data,type,row)
                {
-                   $EDbutton='<a class="btn btn-primary" href="{{ url('/') }}/api/edit/blog/"'+row.id+'"></a>$nbsb;$nbsb;<a class="btn btn-primary" href="javascript:void(0)" onclick=deleteData('+row.id')></a>';
-                   return $EDbutton;
+                  return row.action;
                }
             },
         ]

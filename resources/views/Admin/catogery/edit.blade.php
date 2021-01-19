@@ -25,12 +25,16 @@
 <body>
     <form action="/api/edit/catogery" method="post">
         <input type="hidden" value="{{ $report->id }}" name='id'>
-        <label for="Meta_Title">Meta_Title</label>
-        <input type="text" name="Meta_Title" id="Meta_Title" value="{{$report->Meta_Title}}">
+        <label for="catogery_id">Catogery_ID</label>
+        <input type="text" name="catogery_id" id="catogery_id" value="{{$report->catogery_id}}">
+        <label for="catogery_name">Catogery_Name</label>
+        <input type="text" name="catogery_name" id="catogery_name" value="{{$report->catogery_name}}">
+        <label for="catogery_slug">Catogery_Slug</label>
+        <input type="text" name="catogery_slug" id="catogery_slug" value="{{$report->catogery_slug}}">
 <label for="Added Date"></label>
 <input type="text" name="created_at" id="Added Date" value="{{$report->created_at}}">
 <label for="Modified Date"></label>
-<input type="text" name="updated_at" id="Meta_Title" value="{{$report->updated_at}}">
+<input type="text" name="updated_at" id="Modified Date" value="{{$report->updated_at}}">
         <input type="submit" value="submit" >
 @csrf
     </form>

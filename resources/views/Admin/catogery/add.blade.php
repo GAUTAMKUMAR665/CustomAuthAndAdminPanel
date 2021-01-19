@@ -32,18 +32,12 @@
 </head>
 <body>
     <form action="/api/add/catogery" method="post">
-        <label for="Title">Enter Catogery Name</label>
-        <input type="text" name="Title" id="Title">
+        <label for="catogery_id">Enter Catogery Id</label>
+        <input type="text" name="catogery_id" id="catogery_id">
+        <label for="catogery_name">Enter Catogery Name</label>
+        <input type="text" name="catogery_name" id="catogery_name">
         <label for="Slug">Enter A Slug</label>
-        <input type="text" name="Slug" id="Slug">
-        <label for="Description">Enter Description</label>
-        <input type="text" name="Description" id="Description">
-        <label for="Meta_Title">Enter Meta_Title</label>
-        <input type="text" name="Meta_Title" id="Meta_Title">
-        <label for="Meta_Description">Enter Meta_Description</label>
-        <input type="text" name="Meta_Description" id="Meta_Description">
-        <label for="Meta_Canonical">Enter Meta_Canonical</label>
-        <input type="text" name="Meta_Canonical" id="Meta_Canonical">
+        <input type="text" name="catogery_slug" id="Slug">
         <input type="submit" value="submit">
 @csrf
     </form>

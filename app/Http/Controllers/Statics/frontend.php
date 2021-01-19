@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Statics;
 
 use App\Models\Admin;
+use App\Models\Admin\Catogery;
+use App\Models\Admin\Publisher;
 use App\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,6 +17,14 @@ class frontend extends Controller
 {
    public function main()
    {
+
+       $catogery=Catogery::select('*')->get();
+       $catogeries=json_decode(json_encode($catogery));
+
+       $publisher=Publisher::select('*')->get();
+       $publishers=json_decode(json_encode($publisher));
+
+
        $industry=Admin::select('Meta_Title')->get()->toArray();
        $find="Market Size, Share and Forecast";
        $indusname=[];
@@ -24,10 +34,28 @@ class frontend extends Controller
       $indus=json_decode(json_encode($indusname),False);
 
 
-       return view('targlo.main',['indus'=> $indus]);
+       return view('targlo.main',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
+   }
+   public function main2()
+   {
+       $industry=Admin::select('Meta_Title')->get()->toArray();
+       $find="Market Size, Share and Forecast";
+       $indusname=[];
+       for ($i=0; $i <count($industry) ; $i++) {
+           $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+       }
+      $indus=json_decode(json_encode($indusname),False);
+
+
+       return view('targlo.main2',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
    public function index()
    {
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
+
     $industry=Admin::select('Meta_Title')->get()->toArray();
     $find="Market Size, Share and Forecast";
     $indusname=[];
@@ -35,10 +63,14 @@ class frontend extends Controller
         $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
     }
    $indus=json_decode(json_encode($indusname),False);
-       return view('targlo.index',['indus'=> $indus]);
+       return view('targlo.index',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
    public function industry()
    {
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
     $industry=Admin::select('Meta_Title')->get()->toArray();
     $find="Market Size, Share and Forecast";
     $indusname=[];
@@ -46,12 +78,15 @@ class frontend extends Controller
         $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
     }
    $indus=json_decode(json_encode($indusname),False);
-       return view('targlo.industry',['indus'=> $indus]);
+       return view('targlo.industry',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
 
    public function industrysearch(Request $request)
    {
-       //dd($request->industry);
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
        if($request->industry)
        {
            $find="!";
@@ -65,6 +100,10 @@ class frontend extends Controller
    }
    public function service()
    {
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
     $industry=Admin::select('Meta_Title')->get()->toArray();
     $find="Market Size, Share and Forecast";
     $indusname=[];
@@ -72,11 +111,16 @@ class frontend extends Controller
         $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
     }
    $indus=json_decode(json_encode($indusname),False);
-       return view('targlo.services',['indus'=> $indus]);
+       return view('targlo.services',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
    public function report( $industry)
    {
        //dd($industry);
+       $catogery=Catogery::select('*')->get();
+
+
+       $publisher=Publisher::select('*')->get();
+       $catid=Admin::where(['Category_Id'=>$industry])->get();
        $industry=Admin::select('Meta_Title')->get()->toArray();
        $find="Market Size, Share and Forecast";
        $indusname=[];
@@ -91,11 +135,21 @@ class frontend extends Controller
        $report=Admin::where(['Meta_Title'=>$indusname])->get();
 
        //dd($report);
+       //dd($catid);
 
-       return view('targlo.report',['report'=>$report,'indus'=> $indus]);
+       return view('targlo.reports',['report'=>$report,'indus'=> $indus,'catid'=>$catid,'catogery'=>$catogery,'publisher'=>$publisher]);
+   }
+   public function reports()
+   {
+
+       return view('targlo.reports',['']);
    }
    public function about()
    {
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
     $industry=Admin::select('Meta_Title')->get()->toArray();
     $find="Market Size, Share and Forecast";
     $indusname=[];
@@ -103,10 +157,14 @@ class frontend extends Controller
         $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
     }
    $indus=json_decode(json_encode($indusname),False);
-       return view('targlo.about',['indus'=> $indus]);
+       return view('targlo.about',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
    public function contact()
    {
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
     $industry=Admin::select('Meta_Title')->get()->toArray();
     $find="Market Size, Share and Forecast";
     $indusname=[];
@@ -114,10 +172,14 @@ class frontend extends Controller
         $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
     }
    $indus=json_decode(json_encode($indusname),False);
-       return view('targlo.contact',['indus'=> $indus]);
+       return view('targlo.contact',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
    public function contactstore(Request $request)
    {
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
     $industry=Admin::select('Meta_Title')->get()->toArray();
     $find="Market Size, Share and Forecast";
     $indusname=[];

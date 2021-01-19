@@ -17,6 +17,8 @@
 	<link rel="stylesheet" href="{{asset('css/targlo/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/targlo/css/themify-icons.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/logout.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('css/reports.css') }}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
 
 	<link rel="stylesheet" href="{{asset('css/targlo/css/style.css')}}"/>
@@ -68,7 +70,21 @@
 
 					  <div class="row" >
 
-                    @for ($i = 0; $i <count($indus); $i++)
+
+                    @for($i=0;$i<count($catogery);$i++)
+
+                    <div class="col-12 col-md-4 py-sm-4 py-0 text-sm-center">
+
+                        <ul >
+
+                            <li><a href="/report/{{ $catogery[$i]->catogery_id }}">{{ $catogery[$i]->catogery_name }}</a></li>
+                        </ul>
+                    </div>
+
+
+                    @endfor
+
+                   {{--  @for ($i = 0; $i <count($indus); $i++)
                     <div class="col-12 col-md-4  py-sm-4 py-0 text-sm-center" >
 						<ul class="ulindus">
 
@@ -78,7 +94,7 @@
 						</ul>
 
                     </div>
-                    @endfor
+                    @endfor --}}
 
 
 
@@ -245,5 +261,34 @@
 
         })
     </script>
+    <script>
+        $(function()
+        {
+            $('.search').click(function()
+            {
+                var text=$('.search').index(this);
+                var scahr=$('.search').eq(text).text();
+                $('.ulindus').children('li').hide();
+                //alert(scahr);
+                 $('.ulindus').children('li').filter(function()
+                 {
+                     var text=$(this).text();
+
+
+                     if(text.charAt(0)==scahr)
+                     {
+                         //alert(text);
+                         return text;
+                         //console.log(text);
+                     }
+                     //alert(text);
+                 }).show();
+
+            })
+
+
+        })
+    </script>
+
 </body>
 </html>

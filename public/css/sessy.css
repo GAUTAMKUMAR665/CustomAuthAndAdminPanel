@@ -94,7 +94,8 @@ a {
     text-transform: uppercase;
     position: absolute;
     margin-left: -140px;
-    top: 20%;
+    top: 27%;
+    z-index: 100;
 }
 
 .list a {

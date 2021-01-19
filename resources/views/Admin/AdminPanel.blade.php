@@ -60,7 +60,7 @@
             </a>
           </li>
           <li>
-            <a href="/api/view/report" class="flex items-center px-8 py-3 bg-gradient-to-r hover:from-purple-200 hover:text-purple-600">
+            <a href="/api/view/publiser" class="flex items-center px-8 py-3 bg-gradient-to-r hover:from-purple-200 hover:text-purple-600">
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
@@ -135,7 +135,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="flex items-center px-8 py-3 bg-gradient-to-r hover:from-purple-200 hover:text-purple-600">
+            <a href="/api/getcsv" class="flex items-center px-8 py-3 bg-gradient-to-r hover:from-purple-200 hover:text-purple-600">
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
@@ -149,7 +149,7 @@
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              Calendar
+              Upload Report
             </a>
           </li>
           <li>
