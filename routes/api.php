@@ -55,6 +55,7 @@ Route::post('delete/report',[\App\Http\Controllers\Admin\Report::class,'delete']
 
 #################################################################################################################################
 Route::get('view/catogery',[\App\Http\Controllers\Admin\Catogery::class,'view']);
+Route::post('search/catogery',[\App\Http\Controllers\Admin\Catogery::class,'search']);
 Route::get('edit/catogery/{id}',[\App\Http\Controllers\Admin\Catogery::class,'editform'])->name('edit/catogery');
 Route::post('edit/catogery',[\App\Http\Controllers\Admin\Catogery::class,'edit']);
 Route::get('add/catogery',[\App\Http\Controllers\Admin\Catogery::class,'addform']);

@@ -16,7 +16,14 @@
     Add new
 </a>
     {{-- <a href="/api/add/catogery">ADD Report</a> --}}
-
+<div class="search">
+    <form  method="post" id="search-form" action="/api/search/catogery">
+        <input type="text" name="Catogery_Name" placeholder="Enter Catogery_name ">
+        <input type="text" name="Added_Date" placeholder="Enter Added_Date ">
+        <input type="submit" value="submit">
+        @csrf
+    </form>
+</div>
 
 <table class="table table-bordered data_table">
     <thead>
@@ -53,7 +60,14 @@ $(function(){
         processing:true,
         serverSide:true,
         paging:true,
-        ajax:"{{ url('/') }}/api/view/catogery",
+        ajax:{
+           url:"{{ url('/') }}/api/view/catogery",
+           data:function(d)
+           {
+               d.catogery_name=$('input[name=Catogery_Name]').val();
+               d.added_data=$('input[name=Added_Date]').val();
+           }
+        },
         columns:[
             {
                " data":"ID",
@@ -112,10 +126,24 @@ $(function(){
                    return row.action;
                }
             },
-        ]
+        ],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                $(input).appendTo($(column.footer()).empty())
+                .on('change', function () {
+                    column.search($(this).val(), false, false, true).draw();
+                });
+            });
+        }
     })
-})
 
+})
+$('#search-form').on('submit', function(e) {
+        oTable.draw();
+        e.preventDefault();
+    });
 function deleteData(uid)
 {
     $.confirm({

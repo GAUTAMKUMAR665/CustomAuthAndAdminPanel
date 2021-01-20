@@ -7,12 +7,15 @@ use App\Models\Authentication;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
+
 
 class Userscontroller extends Controller
 {
     public function view(Request $request)
     {
         $data=Authentication::select('*');
+
         if($request->ajax())
         {
 
@@ -25,6 +28,19 @@ class Userscontroller extends Controller
                  $btn=$btn."<a href='javascript:void(0)' class='delete btn-danger btn-sm' onclick='deletedata(".$row->id.")' id='".$row->id."'>Delete</a>";
 
                  return $btn;
+            })
+            ->filter(function ($instance) use ($request) {
+                if ($request->has('name')) {
+                    $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                        return Str::contains($row['name'], $request->get('name')) ? true : false;
+                    });
+                }
+
+                if ($request->has('email')) {
+                    $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                        return Str::contains($row['email'], $request->get('email')) ? true : false;
+                    });
+                }
             })
             ->rawColumns(['action'])
             ->make(true);

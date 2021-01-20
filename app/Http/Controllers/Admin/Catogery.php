@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+Namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,12 +8,35 @@ use Yajra\DataTables\Facades\DataTables;
 
 use App\Models\Admin\Catogery as Catogerylist;
 
-
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Validator;
 
 class Catogery extends Controller
 {
+    public function search(Request $request)
+    {
+        $data=Catogerylist::select('*');
+
+      if($request->ajax())
+      {
+         return DataTables::of($data)
+         ->filter(function ($instance) use ($request) {
+            if ($request->has('Catogery_Name')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['Catogery_Name'], $request->get('Catogery_Name')) ? true : false;
+                });
+            }
+
+            if ($request->has('Added_Data')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['Added_Data'], $request->get('Added_Data')) ? true : false;
+                });
+            }
+        })
+         ->make(true);
+      }
+    }
     public function view(Request $request)
     {
         $data=Catogerylist::select('*');
@@ -30,6 +53,19 @@ class Catogery extends Controller
 
               return $btn;
          })
+         ->filter(function ($instance) use ($request) {
+            if ($request->has('Catogery_Name')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['Catogery_Name'], $request->get('Catogery_Name')) ? true : false;
+                });
+            }
+
+            if ($request->has('Added_Data')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['Added_Data'], $request->get('Added_Data')) ? true : false;
+                });
+            }
+        })
          ->rawColumns(['action'])
          ->make(true);
       }
@@ -46,7 +82,7 @@ class Catogery extends Controller
     {
         $validator=Validator::make($request->all(),[
             "catogery_id"=>"required|unique:catogeries,catogery_id",
-            "catogery_name"=>"required|unique:catogeries,catogery_name",
+            "catogery_Catogery_Name"=>"required|unique:catogeries,catogery_Catogery_Name",
             "catogery_slug"=>"required|unique:catogeries,catogery_slug",
               'created_at'=>'required',
               'updated_at'=>'required',
@@ -60,7 +96,7 @@ class Catogery extends Controller
         }
         else{
 
-            Catogerylist::where('id',$request->id)->update(['catogery_id'=>$request->catogery_id,'catogery_name'=>$request->catogery_name,'catogery_slug'=>$request->catogery_slug,'created_at'=>$request->created_at,'updated_at'=>$request->updated_at]);
+            Catogerylist::where('id',$request->id)->update(['catogery_id'=>$request->catogery_id,'catogery_Catogery_Name'=>$request->catogery_Catogery_Name,'catogery_slug'=>$request->catogery_slug,'created_at'=>$request->created_at,'updated_at'=>$request->updated_at]);
 
             return response()->json(['status'=>0,'Message'=>'Catogery Update sucessful']);
 
@@ -76,7 +112,7 @@ class Catogery extends Controller
     {
          $validator=Validator::make($request->all(),[
             "catogery_id"=>"required|unique:catogeries,catogery_id",
-            "catogery_name"=>"required|unique:catogeries,catogery_name",
+            "catogery_Catogery_Name"=>"required|unique:catogeries,catogery_Catogery_Name",
             "catogery_slug"=>"required|unique:catogeries,catogery_slug",
 
         ]);
@@ -90,7 +126,7 @@ class Catogery extends Controller
 
             $catogery=new Catogerylist();
             $catogery->catogery_id=$request->catogery_id;
-            $catogery->catogery_name=$request->catogery_name;
+            $catogery->catogery_Catogery_Name=$request->catogery_Catogery_Name;
             $catogery->catogery_slug=$request->catogery_slug;
             $catogery->save();
 
