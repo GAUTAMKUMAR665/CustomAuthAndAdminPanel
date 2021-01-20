@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Catogery extends Controller
 {
-    public function search(Request $request)
+    public function searchs(Request $request)
     {
         $data=Catogerylist::select('*');
 

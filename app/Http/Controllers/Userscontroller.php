@@ -29,7 +29,7 @@ class Userscontroller extends Controller
 
                  return $btn;
             })
-            ->filter(function ($instance) use ($request) {
+            ->filters(function ($instance) use ($request) {
                 if ($request->has('name')) {
                     $instance->collection = $instance->collection->filter(function ($row) use ($request) {
                         return Str::contains($row['name'], $request->get('name')) ? true : false;
