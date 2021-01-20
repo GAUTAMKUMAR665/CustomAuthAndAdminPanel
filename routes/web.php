@@ -37,6 +37,7 @@ Route::get('/industry',[\App\Http\Controllers\Statics\frontend::class,'industry'
 Route::post('/industry/search/',[\App\Http\Controllers\Statics\frontend::class,'industrysearch']);
 
 Route::get('/service',[\App\Http\Controllers\Statics\frontend::class,'service']);
+Route::get('/catogery/{idustry}',[\App\Http\Controllers\Statics\frontend::class,'catogery']);
 Route::get('/report/{idustry}',[\App\Http\Controllers\Statics\frontend::class,'report']);
 Route::get('/aboutus',[\App\Http\Controllers\Statics\frontend::class,'about']);
 Route::get('/contactus',[\App\Http\Controllers\Statics\frontend::class,'contact']);

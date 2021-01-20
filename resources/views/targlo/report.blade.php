@@ -39,25 +39,14 @@
                     <span class="sr-only"></span>
                   </button>
                   <button type="button" class="btn btn-primary">
-                    Report ID <span class="badge badge-light">{{ $reports->Category_Id}}</span>
+                    Catogery_Name <span class="badge badge-light">{{ $catname[0]->catogery_name}}</span>
                     <span class="sr-only">unread messages</span>
                   </button>
                   <button type="button" class="btn btn-primary">
-                    Pulisher Id <span class="badge badge-light">{{ $reports->Publisher_Id }}</span>
+                    Pulisher Name <span class="badge badge-light">{{$pubname[0]->name}}</span>
                     <span class="sr-only"></span>
                   </button>
-                  <button type="button" class="btn btn-primary">
-                 Segmentation <span class="badge badge-light">{{ $reports->Segmentation }}</span>
-                    <span class="sr-only"></span>
-                  </button>
-                  <button type="button" class="btn btn-primary">
-                 Key_Player <span class="badge badge-light">{{ $reports->key_player }}</span>
-                    <span class="sr-only"></span>
-                  </button>
-                  <button type="button" class="btn btn-primary">
-                 Summary <span class="badge badge-light">{{ $reports->Summary }}</span>
-                    <span class="sr-only"></span>
-                  </button>
+
                 <div class="responsive-tabs mt-3 pt-3">
                     <ul class="nav nav-tabs mb-3" role="tablist">
                         <li role="presentation" class="">
@@ -65,7 +54,7 @@
                         </li>
                         <li role="presentation" class="">
 
-                        <a href="/toc/{{ $reports->Meta_Title }}" >Table of Content</a>
+                        <a href="#tab2" aria-controls="tab3" role="tab" data-toggle="tab">Table of Content</a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Request Sample</a>
@@ -88,20 +77,24 @@
                              </p>
 
                         </div>
-
-                        <div class="panel-heading" role="tab" id="heading2">
+{{--
+                    <div class="panel-heading" role="tab" id="heading2">
                             <a href="/toc/" class="collapsed" role="button" data-toggle="collapse" data-parent="tabs-content"
                                aria-expanded="true" aria-controls="tab2">Tab 2</a>
                         </div>
+  --}}
+
+  <div class="panel-heading" role="tab" id="heading2">
+    <a href="#tab2" class="collapsed" role="button" data-toggle="collapse" data-parent="tabs-content"
+       aria-expanded="true" aria-controls="tab2">Tab 2</a>
+</div>
 
 
-
-                       {{--  <div id="tab2" role="tabpanel" class="tab-pane panel-collapse collapse" aria-labelledby="heading2">
-                            <p class="toc" >
+                        <div id="tab2" role="tabpanel" class="tab-pane panel-collapse collapse" aria-labelledby="heading2">
+                            <p>
                               {!! $reports->Table_of_Content !!}
-                               </p>
-                        </div> --}}
-
+                            </p>
+                        </div>
                         <div class="panel-heading" role="tab" id="heading3">
                             <a href="#tab3" class="collapsed" role="button" data-toggle="collapse" data-parent="tabs-content"
                                aria-expanded="true" aria-controls="tab3">Tab 3</a>
@@ -249,16 +242,16 @@
 
               <h4 class="mb-4">Some headings</h4 class="mb-4">
                 <div class="rdio rdio-primary radio-inline"> <input name="radio" value="1" id="radio1" type="radio" checked>
-                    <label for="radio1">Single User:{{ $reports->Single_User_Price }}</label>
+                    <label for="radio1">Single User:{{ $reports->Currency }}{{ $reports->Single_User_Amount }}</label>
                 </div>
                 <div class="rdio rdio-primary radio-inline">
                     <input name="radio" value="2" id="radio2" type="radio">
-                    <label for="radio2">Multi User:{{ $reports->Multi_User_Price }}</label>
+                    <label for="radio2">Multi User:{{ $reports->Currency }}{{ $reports->Multi_User_Amount }}</label>
 
                 </div>
                 <div class="rdio rdio-primary radio-inline">
                     <input name="radio" value="3" id="radio3" type="radio">
-                    <label for="radio3">Enterprise User: {{ $reports->Enterprise_User_Price }}</label>
+                    <label for="radio3">Enterprise User:{{ $reports->Currency }}{{ $reports->Enterprise_Amount }}</label>
 
                 </div>
                 <a href="/payment" class="site-btn sb-gradients sbg-line mt-3">Buy now</a>

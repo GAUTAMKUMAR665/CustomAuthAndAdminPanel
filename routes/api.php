@@ -79,12 +79,12 @@ Route::post('delete/publiser',[\App\Http\Controllers\Admin\Publisher::class,'del
 
 ###############################################################################################################################################
 
-Route::get('view/user',[\App\Http\Controllers\Admin\Userscontroller::class,'view']);
-Route::get('edit/user/{id}',[\App\Http\Controllers\Admin\Userscontroller::class,'editform'])->name('edit/publiser');
-Route::post('edit/user',[\App\Http\Controllers\Admin\Userscontroller::class,'edit']);
-Route::get('add/user',[\App\Http\Controllers\Admin\Userscontroller::class,'addform']);
-Route::post('add/user',[\App\Http\Controllers\Admin\Userscontroller::class,'add']);
-Route::post('delete/user',[\App\Http\Controllers\Admin\Userscontroller::class,'delete']);
+Route::get('view/user',[\App\Http\Controllers\Userscontroller::class,'view']);
+Route::get('edit/user/{id}',[\App\Http\Controllers\Userscontroller::class,'editform'])->name('edit/user');
+Route::post('edit/user',[\App\Http\Controllers\Userscontroller::class,'edit']);
+Route::get('add/user',[\App\Http\Controllers\Userscontroller::class,'addform']);
+Route::post('add/user',[\App\Http\Controllers\Userscontroller::class,'add']);
+Route::post('delete/user',[\App\Http\Controllers\Userscontroller::class,'delete']);
 
 #############################################################################################################################
 
@@ -106,7 +106,9 @@ Route::get('admin/otp',[\App\Http\Controllers\AdminauthController::class,'login'
 Route::get('admin/verifyotp',[\App\Http\Controllers\AdminauthController::class,'verify']);
 
 ##########################################################################################################################
-Route::get('Usersdata',[App\Http\Controllers\Userscontroller::class,'data']);
+
+
+
 
 
 

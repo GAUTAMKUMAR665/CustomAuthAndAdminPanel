@@ -21,9 +21,9 @@ class Report extends Controller
            {
                return DataTables::of($data)
                ->addIndexColumn()
-               ->addColumn(function($row){
-                   $btn="<a href='".route('/api/edit/report',$row->id)."' class='edit btn btn-primary'>Edit</a>";
-                   $btn=$btn."<a href='".route('',$row->id)."' class='delete btn btn-danger'>Danger</a>";
+               ->addColumn('action',function($row){
+                   $btn="<a href='".route('edit/report',$row->id)."' class='edit btn btn-primary'>Edit</a>";
+                   $btn=$btn."<a href='javascript::void(0)' class='delete btn btn-danger' onclick='deleteData(".$row->id.")'>Delete</a>";
 
                    return $btn;
                })
@@ -84,8 +84,10 @@ class Report extends Controller
   }
   public function delete(Request $request)
   {
-      if($request->id)
+      //dd($request->id);
+       if($request->id)
       {
+          //return $request->id;
           Admin::where(['id'=>$request->id])->delete();
       }
 

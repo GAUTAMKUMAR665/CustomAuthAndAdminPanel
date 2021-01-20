@@ -1,6 +1,10 @@
-@extends('Admin.home')
+@extends('Admin.adminpanel')
 
 @section('content')
+
+<a href="/api/add/user"><i class="glyphicon glyphicon-add"></i>Add User</a>
+
+
 <section>
 <table class="table table-bordered data_table">
     <thead>
@@ -9,9 +13,10 @@
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Verification_Method</th>
     <th>Is_verified</th>
     <th>Action</th>
-    <th>Extra</th>
+
 </tr>
     </thead>
 
@@ -24,9 +29,10 @@
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
+        <th>Verification_Method</th>
         <th>Is_verified</th>
         <th>Action</th>
-        <th>Extra</th>
+
     </tr>
 </tfoot>
 </table>
@@ -39,7 +45,7 @@ $(function()
         processing:true,
         serverSide:true,
         paging:true,
-        ajax:"{{url('/')}}/api/Usersdata",
+        ajax:"{{url('/')}}/api/view/user",
         columns:[
             ///{data:'id'},
             {
@@ -53,10 +59,13 @@ $(function()
             {data:'name'},
             {data:'email'},
             {data:'phone'},
+            {data:'verification_method'},
             {data:'is_verified'},
             {data:'action'},
-            {data:'extra'},
-        ]
+
+        ],
+
+
     })
 });
 
@@ -74,8 +83,6 @@ function editdata(uid)
 }
 function deletedata(uid)
 {
-    alert('delete clicked');
-
     $.confirm({
         title:"Confirm!",
         content:"Are You Sure Want To Delete?",
@@ -83,7 +90,7 @@ function deletedata(uid)
             confirm:function(){
                $.ajax({
                    'type':'post',
-                   'url':"{{url('/')}}/api/Delete",
+                   'url':"{{url('/')}}/api/delete/user",
                    'headers':{
                        'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
                    },

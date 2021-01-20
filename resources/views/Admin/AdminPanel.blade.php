@@ -21,6 +21,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/adminpanel.css')}}">
     <link rel="stylesheet" href="{{asset('css/dtable.css')}}">
+    <link rel="stylesheet" href="{{asset('css/form.css')}}">
     <title>ADMIN</title>
 </head>
 <body>
@@ -117,7 +118,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="flex items-center px-8 py-3 bg-gradient-to-r hover:from-purple-200 hover:text-purple-600">
+            <a href="/api/view/user" class="flex items-center px-8 py-3 bg-gradient-to-r hover:from-purple-200 hover:text-purple-600">
               <svg
                 fill="none"
                 viewBox="0 0 24 24"

@@ -28,7 +28,7 @@
 </style>
 </head>
 <body>
-    <form action="/api/add/reports" method="post">
+    <form class="addform" action="/api/add/reports" method="post">
         <label for="Category_Id">Select Catogery Id</label>
         <select name="Category_Id" id="Category_Id">
             @foreach ($report as $reports)

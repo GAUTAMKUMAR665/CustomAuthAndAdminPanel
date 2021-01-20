@@ -77,11 +77,9 @@
 
                         <ul >
 
-                            <li><a href="/report/{{ $catogery[$i]->catogery_id }}">{{ $catogery[$i]->catogery_name }}</a></li>
+                            <li><a href="/catogery/{{ $catogery[$i]->catogery_id }}">{{ $catogery[$i]->catogery_name }}</a></li>
                         </ul>
                     </div>
-
-
                     @endfor
 
                    {{--  @for ($i = 0; $i <count($indus); $i++)

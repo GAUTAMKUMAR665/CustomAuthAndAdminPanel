@@ -113,7 +113,7 @@ class frontend extends Controller
    $indus=json_decode(json_encode($indusname),False);
        return view('targlo.services',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
-   public function report( $industry)
+   public function catogery( $industry)
    {
        //dd($industry);
        $catogery=Catogery::select('*')->get();
@@ -138,6 +138,52 @@ class frontend extends Controller
        //dd($catid);
 
        return view('targlo.reports',['report'=>$report,'indus'=> $indus,'catid'=>$catid,'catogery'=>$catogery,'publisher'=>$publisher]);
+   }
+   public function report( $industry)
+   {
+       //dd($industry);
+       $catogery=Catogery::select('*')->get();
+
+
+       $publisher=Publisher::select('*')->get();
+
+
+       $industry=Admin::select('Meta_Title')->get()->toArray();
+
+       $catid=Admin::where(['Meta_Title'=>$industry])->pluck('Category_Id');
+       $pubid=Admin::where(['Meta_Title'=>$industry])->pluck('Publisher_Id');
+
+
+       $catname=Catogery::where(['catogery_id'=>$catid])->get();
+       $pubname=Publisher::where(['publisher_id'=>$pubid])->get();
+
+
+
+     // dd($catname);
+
+       $find="Market Size, Share and Forecast";
+       $indusname=[];
+       for ($i=0; $i <count($industry) ; $i++) {
+           $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+       }
+      $indus=json_decode(json_encode($indusname),False);
+       $find="!";
+
+       $indusname=str_ireplace($find,"Market Size, Share and Forecast",$industry);
+
+      //dd($indusname);
+
+       $report=Admin::where(['Meta_Title'=>$indusname])->get();
+
+       //dd($report[0]->Meta_Description);;
+
+
+  //dd($catid);
+
+       //dd($report);
+       //dd($catid);
+
+       return view('targlo.report',['report'=>$report,'indus'=> $indus,'catid'=>$catid,'catogery'=>$catogery,'publisher'=>$publisher,'catname'=>$catname,'pubname'=>$pubname]);
    }
    public function reports()
    {
