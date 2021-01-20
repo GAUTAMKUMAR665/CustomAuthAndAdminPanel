@@ -16,7 +16,7 @@
     Add new
 </a>
     {{-- <a href="/api/add/catogery">ADD Report</a> --}}
-<div class="search">
+<div class="searchtable">
     <form  method="post" id="search-form" action="/api/search/catogery">
         <input type="text" name="Catogery_Name" placeholder="Enter Catogery_name ">
         <input type="text" name="Added_Date" placeholder="Enter Added_Date ">
