@@ -127,7 +127,9 @@ public function delete(Request $request){
                 Admin::insert([$details[$i]]);
             }
 
-            dd($GLOBALS['header']);
+            return response()->json(['status'=>1,'Message'=>'Report Sucessfully Upload To Database']);
+
+           // dd($GLOBALS['header']);
         }
     }
 

@@ -15,6 +15,7 @@ class Userscontroller extends Controller
     public function view(Request $request)
     {
         $data=Authentication::select('*');
+       // $data=Authentication::latest()->get();
 
         if($request->ajax())
         {
@@ -29,19 +30,9 @@ class Userscontroller extends Controller
 
                  return $btn;
             })
-            ->filters(function ($instance) use ($request) {
-                if ($request->has('name')) {
-                    $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                        return Str::contains($row['name'], $request->get('name')) ? true : false;
-                    });
-                }
 
-                if ($request->has('email')) {
-                    $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                        return Str::contains($row['email'], $request->get('email')) ? true : false;
-                    });
-                }
-            })
+
+
             ->rawColumns(['action'])
             ->make(true);
 

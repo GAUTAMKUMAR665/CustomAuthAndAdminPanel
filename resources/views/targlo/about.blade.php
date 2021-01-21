@@ -21,7 +21,7 @@
 			<div class="row">
 				<div class="col-md-6 about-text">
 					<h2>What is Targlo</h2>
-					<h5>Targlo is a Research is a market intelligence platform</h5>
+					<h5>Targlo is a Research  market intelligence platform</h5>
 					<p>Targlo Research is a market intelligence platform which gives access to syndicated, customised reports and consulting to its clients at one place. As a firm with rich experience in research and consulting across multiple domains we are one stop solution that will cater to the needs of clients in key business areas. Our company has an online platform whose coverage includes industries such as Chemicals and Materials, Agriculture, Health care services, Animal feed and food & beverages among others. Our platform has Insights on markets that uncover latest market research data that’s distinct from the competition. With coverage across 10 major industries in the marketplace research, Targlo benefits thousands of companies by helping them take their innovations early to the market by providing a complete view of the market with statistical forecasts. Our strategy centric framework and value-added services will let individuals and corporates with ease of access and custom personalization to research and markets.
                     </p>
 					<a href="" class="site-btn sb-gradients sbg-line mt-5">Get Started</a>

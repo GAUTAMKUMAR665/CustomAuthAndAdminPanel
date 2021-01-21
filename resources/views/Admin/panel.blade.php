@@ -14,6 +14,51 @@
 </script>
 <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
 </script>
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('css/adminpanel.css')}}">
+<link rel="stylesheet" href="{{asset('css/dtable.css')}}">
+<link rel="stylesheet" href="{{asset('css/form.css')}}">
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="
+https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="
+https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+
+
+
+
+
+
+
+
 </head>
 <body>
     <div class="page-wrapper chiller-theme toggled">
@@ -65,21 +110,18 @@
                 <li class="sidebar-dropdown">
                   <a href="#">
                     <i class="fa fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    <span>Publisher</span>
                     <span class="badge badge-pill badge-warning">New</span>
                   </a>
                   <div class="sidebar-submenu">
                     <ul>
                       <li>
-                        <a href="#">Dashboard 1
+                        <a href="/api/view/publiser">VIEW
                           <span class="badge badge-pill badge-success">Pro</span>
                         </a>
                       </li>
                       <li>
-                        <a href="#">Dashboard 2</a>
-                      </li>
-                      <li>
-                        <a href="#">Dashboard 3</a>
+                        <a href="/api/add/publiser">ADD</a>
                       </li>
                     </ul>
                   </div>
@@ -87,84 +129,69 @@
                 <li class="sidebar-dropdown">
                   <a href="#">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>E-commerce</span>
+                    <span>Catogery</span>
                     <span class="badge badge-pill badge-danger">3</span>
                   </a>
                   <div class="sidebar-submenu">
                     <ul>
                       <li>
-                        <a href="#">Products
+                        <a href="/api/view/catogery">VIEW
 
                         </a>
                       </li>
                       <li>
-                        <a href="#">Orders</a>
+                        <a href="/api/add/catogery">ADD</a>
                       </li>
-                      <li>
-                        <a href="#">Credit cart</a>
-                      </li>
+
                     </ul>
                   </div>
                 </li>
                 <li class="sidebar-dropdown">
                   <a href="#">
                     <i class="far fa-gem"></i>
-                    <span>Components</span>
+                    <span>Report</span>
                   </a>
                   <div class="sidebar-submenu">
                     <ul>
                       <li>
-                        <a href="#">General</a>
+                        <a href="/api/view/report">VIEW</a>
                       </li>
                       <li>
-                        <a href="#">Panels</a>
+                        <a href="/api/add/report">ADD</a>
                       </li>
-                      <li>
-                        <a href="#">Tables</a>
-                      </li>
-                      <li>
-                        <a href="#">Icons</a>
-                      </li>
-                      <li>
-                        <a href="#">Forms</a>
-                      </li>
+
                     </ul>
                   </div>
                 </li>
                 <li class="sidebar-dropdown">
                   <a href="#">
                     <i class="fa fa-chart-line"></i>
-                    <span>Charts</span>
+                    <span>PressRelease</span>
                   </a>
                   <div class="sidebar-submenu">
                     <ul>
                       <li>
-                        <a href="#">Pie chart</a>
+                        <a href="/api/view/pressrelease">VIEW</a>
                       </li>
                       <li>
-                        <a href="#">Line chart</a>
+                        <a href="/api/add/pressrelease">ADD</a>
                       </li>
-                      <li>
-                        <a href="#">Bar chart</a>
-                      </li>
-                      <li>
-                        <a href="#">Histogram</a>
-                      </li>
+
                     </ul>
                   </div>
                 </li>
                 <li class="sidebar-dropdown">
                   <a href="#">
                     <i class="fa fa-globe"></i>
-                    <span>Maps</span>
+                    <span>User</span>
                   </a>
                   <div class="sidebar-submenu">
                     <ul>
                       <li>
-                        <a href="#">Google maps</a>
+                        <a href="/api/view/user">VIEW</a>
                       </li>
                       <li>
-                        <a href="#">Open street map</a>
+                        <a href="/api/add/user">ADD</a>
                       </li>
                     </ul>
                   </div>
@@ -215,97 +242,11 @@
           </div>
         </nav>
         <!-- sidebar-wrapper  -->
+            <!-- page-content" -->
         <main class="page-content">
-          <div class="container">
-            <h2>Pro Sidebar</h2>
-            <hr>
-            <div class="row">
-              <div class="form-group col-md-12">
-                <p>This is a responsive sidebar template with dropdown menu based on bootstrap 4 framework.</p>
-                <p> You can find the complete code on <a href="https://github.com/azouaoui-med/pro-sidebar-template" target="_blank">
-                    Github</a>, it contains more themes and background image option</p>
-              </div>
-              <div class="form-group col-md-12">
-                <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=star&count=true&size=small" frameborder="0" scrolling="0" width="90px" height="30px"></iframe>
-                <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=fork&count=true&size=small" frameborder="0" scrolling="0" width="90px" height="30px"></iframe>
-              </div>
-              <div class="form-group col-md-12">
-                <div class="alert alert-success" role="alert">
-                  <h4 class="alert-heading">New !</h4>
-                  <p>New react pro sidebar library is now available on <a href="https://www.npmjs.com/package/react-pro-sidebar" target="_blank">npm</a> <a href="https://github.com/azouaoui-med/react-pro-sidebar" target="_blank">
-                      <img alt="GitHub stars" src="https://img.shields.io/github/stars/azouaoui-med/react-pro-sidebar?style=social" />
-                    </a></p>
-                  <a href="https://github.com/azouaoui-med/react-pro-sidebar" target="_blank" class="btn btn-sm btn-primary mr-2">
-                    Github</a>
-                  <a href="https://azouaoui-med.github.io/react-pro-sidebar" target="_blank" class="btn btn-sm btn-success">
-                    Demo</a>
 
-                </div>
 
-              </div>
-            </div>
-            <h5>More templates</h5>
-            <hr>
-            <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="card rounded-0 p-0 shadow-sm">
-                  <img src="https://user-images.githubusercontent.com/25878302/58369568-a49b2480-7efc-11e9-9ca9-2be44afacda1.png" class="card-img-top rounded-0" alt="Angular pro sidebar">
-                  <div class="card-body text-center">
-                    <h6 class="card-title">Angular Pro Sidebar</h6>
-                    <a href="https://github.com/azouaoui-med/angular-pro-sidebar" target="_blank" class="btn btn-primary btn-sm">Github</a>
-                    <a href="https://azouaoui-med.github.io/angular-pro-sidebar/demo/" target="_blank" class="btn btn-success btn-sm">Demo</a>
-                    <hr>
-                    <a href="https://github.com/azouaoui-med/react-pro-sidebar" target="_blank">
-                      <img alt="GitHub stars" src="https://img.shields.io/github/stars/azouaoui-med/angular-pro-sidebar?style=social" />
-                    </a>
-                    <a href="https://github.com/azouaoui-med/react-pro-sidebar" target="_blank">
-                      <img alt="GitHub stars" src="https://img.shields.io/github/forks/azouaoui-med/angular-pro-sidebar?style=social" />
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="card rounded-0 p-0 shadow-sm">
-                  <img src="https://user-images.githubusercontent.com/25878302/58369258-33f20900-7ef8-11e9-8ff3-b277cb7ed7b4.PNG" class="card-img-top rounded-0" alt="Angular pro sidebar">
-                  <div class="card-body text-center">
-                    <h6 class="card-title">Angular Dashboard</h6>
-                    <a href="https://github.com/azouaoui-med/lightning-admin-angular" target="_blank" class="btn btn-primary btn-sm">Github</a>
-                    <a href="https://azouaoui-med.github.io/lightning-admin-angular/demo/" target="_blank" class="btn btn-success btn-sm">Demo</a>
-                    <hr>
-                    <a href="https://github.com/azouaoui-med/react-pro-sidebar" target="_blank">
-                      <img alt="GitHub stars" src="https://img.shields.io/github/stars/azouaoui-med/lightning-admin-angular?style=social" />
-                    </a>
-                    <a href="https://github.com/azouaoui-med/react-pro-sidebar" target="_blank">
-                      <img alt="GitHub stars" src="https://img.shields.io/github/forks/azouaoui-med/lightning-admin-angular?style=social" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr>
-
-            <footer class="text-center">
-              <div class="mb-2">
-                <small>
-                  © 2020 made with <i class="fa fa-heart" style="color:red"></i> by - <a target="_blank" rel="noopener noreferrer" href="https://azouaoui.netlify.com">
-                    Mohamed Azouaoui
-                  </a>
-                </small>
-              </div>
-
-              <div>
-                <a href="https://github.com/azouaoui-med" target="_blank">
-                  <img alt="GitHub followers" src="https://img.shields.io/github/followers/azouaoui-med?label=github&style=social" />
-                </a>
-                <a href="https://twitter.com/azouaoui_med" target="_blank">
-                  <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/azouaoui_med?label=twitter&style=social" />
-                </a>
-              </div>
-            </footer>
-
-          </div>
+      @yield('content')
 
         </main>
         <!-- page-content" -->

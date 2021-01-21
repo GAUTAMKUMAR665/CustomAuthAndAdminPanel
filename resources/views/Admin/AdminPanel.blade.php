@@ -22,8 +22,18 @@
     <link rel="stylesheet" href="{{asset('css/adminpanel.css')}}">
     <link rel="stylesheet" href="{{asset('css/dtable.css')}}">
     <link rel="stylesheet" href="{{asset('css/form.css')}}">
+
+
+
+
     <title>ADMIN</title>
 </head>
+{{-- <script>
+    $('.search-form').keyup(function(){
+        table.draw();
+
+    });
+</script> --}}
 <body>
 
 

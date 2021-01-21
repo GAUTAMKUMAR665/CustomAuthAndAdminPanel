@@ -141,7 +141,20 @@ class frontend extends Controller
    }
    public function report( $industry)
    {
+
        //dd($industry);
+
+       // dd($reportname);
+       $exclmation="!";
+
+       $reportname=str_ireplace($exclmation,"Market Size, Share and Forecast",$industry);
+     // dd($indusname);
+
+     //dd($reportname);
+
+       $report=Admin::where(['Meta_Title'=> $reportname])->get();
+
+//dd($report);
        $catogery=Catogery::select('*')->get();
 
 
@@ -160,27 +173,22 @@ class frontend extends Controller
 
 
      // dd($catname);
+     $find="Market Size, Share and Forecast";
 
-       $find="Market Size, Share and Forecast";
+
        $indusname=[];
        for ($i=0; $i <count($industry) ; $i++) {
            $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
        }
       $indus=json_decode(json_encode($indusname),False);
-       $find="!";
 
-       $indusname=str_ireplace($find,"Market Size, Share and Forecast",$industry);
-
-      //dd($indusname);
-
-       $report=Admin::where(['Meta_Title'=>$indusname])->get();
 
        //dd($report[0]->Meta_Description);;
 
 
   //dd($catid);
 
-       //dd($report);
+      // dd($report);
        //dd($catid);
 
        return view('targlo.report',['report'=>$report,'indus'=> $indus,'catid'=>$catid,'catogery'=>$catogery,'publisher'=>$publisher,'catname'=>$catname,'pubname'=>$pubname]);

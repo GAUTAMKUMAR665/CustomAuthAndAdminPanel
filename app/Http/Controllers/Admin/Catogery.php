@@ -22,13 +22,13 @@ class Catogery extends Controller
       {
          return DataTables::of($data)
          ->filter(function ($instance) use ($request) {
-            if ($request->has('Catogery_Name')) {
+            if (!empty($request->get('Catogery_Name'))) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['Catogery_Name'], $request->get('Catogery_Name')) ? true : false;
+                    return Str::contains($row['Catogery Name'], $request->get('Catogery_Name')) ? true : false;
                 });
             }
 
-            if ($request->has('Added_Data')) {
+            if (!empty($request->get('Added_Data'))) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
                     return Str::contains($row['Added_Data'], $request->get('Added_Data')) ? true : false;
                 });
@@ -54,13 +54,13 @@ class Catogery extends Controller
               return $btn;
          })
          ->filter(function ($instance) use ($request) {
-            if ($request->has('Catogery_Name')) {
+            if ($request->get('Catogery_Name')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
                     return Str::contains($row['Catogery_Name'], $request->get('Catogery_Name')) ? true : false;
                 });
             }
 
-            if ($request->has('Added_Data')) {
+            if ($request->get('Added_Data')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
                     return Str::contains($row['Added_Data'], $request->get('Added_Data')) ? true : false;
                 });

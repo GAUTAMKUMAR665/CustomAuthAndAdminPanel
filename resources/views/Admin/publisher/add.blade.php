@@ -1,4 +1,4 @@
-@extends('Admin.home')
+@extends('Admin.panel')
 
 @section('content')
 <!DOCTYPE html>

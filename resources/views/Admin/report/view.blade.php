@@ -1,7 +1,9 @@
-@extends('Admin.adminPanel')
+@extends('Admin.panel')
 
 @section('content')
-<a href="/api/add/report"
+<form action="/api/postcsv" method="post" enctype="multipart/form-data" id="formid" style="position: fixed;left:920px;top:1px;">
+    <input type="file" name="csvfile" id="csvid" style="position:fixed;left:710px;">
+    <button
     class="py-2 pl-5 pr-6 mr-3 flex items-center flex-shrink-0 bg-purple-600 rounded-lg text-white text-sm font-semibold hover:bg-purple-700 button"
   >
     <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 mr-2">
@@ -11,11 +13,15 @@
         clip-rule="evenodd"
       />
     </svg>
-    Add new
-</a>
+    Upload
+    </button>
+
+   @csrf
+</form>
 
 
-<table class="table table-bordered data_table">
+
+<table class="table table-bordered data_table" >
 <thead>
 <tr>
     <th>Id</th>
@@ -56,9 +62,16 @@ $(function()
 {
 
     $('.data_table').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         processing:true,
         serverSide:true,
+        scrollX:true,
+        scrollY:true,
         paging:true,
+        searching:true,
         ajax:"{{url('/')}}/api/view/report",
         columns:[
 
@@ -152,10 +165,22 @@ $(function()
             },
 
 
-        ]
+        ],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                $(input).appendTo($(column.footer()).empty())
+                .on('change', function () {
+                    column.search($(this).val(), false, false, true).draw();
+                });
+            });
+        }
+
 
     })
 })
+
 
 
 

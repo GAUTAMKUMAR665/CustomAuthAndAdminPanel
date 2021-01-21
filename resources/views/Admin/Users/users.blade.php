@@ -1,8 +1,8 @@
-@extends('Admin.adminpanel')
+@extends('Admin.panel')
 
 @section('content')
 
-<a href="/api/add/user"><i class="glyphicon glyphicon-add"></i>Add User</a>
+
 
 
 <section>
@@ -42,6 +42,11 @@
 $(function()
 {
     $('.data_table').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        scrollX:true,
         processing:true,
         serverSide:true,
         paging:true,
@@ -64,6 +69,17 @@ $(function()
             {data:'action'},
 
         ],
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                $(input).appendTo($(column.footer()).empty())
+                .on('change', function () {
+                    column.search($(this).val(), false, false, true).draw();
+                });
+            });
+        }
+
 
 
     })

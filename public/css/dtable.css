@@ -1,17 +1,9 @@
-.button{
-    position: absolute;
-    right:10px;
-    height:40px;
-    width: 150px;
-    font-size: large;
-    top:0px;
+.dt-buttons
+{
+    position: fixed;
+    left:115px;
 }
 
-.data_table{
-    position: relative;
-    font-size: smaller;
-    width: 500px;
-}
 .edit{
     font-size: medium;
     margin: 2px;
