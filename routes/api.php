@@ -89,6 +89,14 @@ Route::post('delete/user',[\App\Http\Controllers\Userscontroller::class,'delete'
 
 #############################################################################################################################
 
+Route::get('view/simplerequest',[\App\Http\Controllers\Userscontroller::class,'view']);
+Route::get('edit/simplerequest/{id}',[\App\Http\Controllers\Userscontroller::class,'editform'])->name('edit/user');
+Route::post('edit/simplerequest',[\App\Http\Controllers\Userscontroller::class,'edit']);
+Route::get('add/simplerequest',[\App\Http\Controllers\Userscontroller::class,'addform']);
+Route::post('add/simplerequest',[\App\Http\Controllers\Userscontroller::class,'add']);
+Route::post('delete/simplerequest',[\App\Http\Controllers\Userscontroller::class,'delete']);
+###############################################################################################################################
+
 Route::get('superadmin/register',[\App\Http\Controllers\SuperadminController::class,'register']);
 Route::get('superadmin/register/store',[\App\Http\Controllers\SuperadminController::class,'registerstore']);
 Route::get('superadmin/login',[\App\Http\Controllers\SuperadminController::class,'login']);

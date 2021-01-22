@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Statics;
 
 use App\Models\Admin;
 use App\Models\Admin\Catogery;
+use App\Models\Admin\SimpleRequest;
 use App\Models\Admin\Publisher;
 use App\Models\Client;
+use App\Models\Admin\Contactus;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -144,7 +146,7 @@ class frontend extends Controller
 
        //dd($industry);
 
-       // dd($reportname);
+
        $exclmation="!";
 
        $reportname=str_ireplace($exclmation,"Market Size, Share and Forecast",$industry);
@@ -158,17 +160,29 @@ class frontend extends Controller
        $catogery=Catogery::select('*')->get();
 
 
+
+
+
        $publisher=Publisher::select('*')->get();
 
+      // dd($publisher);
 
        $industry=Admin::select('Meta_Title')->get()->toArray();
 
        $catid=Admin::where(['Meta_Title'=>$industry])->pluck('Category_Id');
+
+      // dd($catid);
        $pubid=Admin::where(['Meta_Title'=>$industry])->pluck('Publisher_Id');
+
+       //dd($pubid);
 
 
        $catname=Catogery::where(['catogery_id'=>$catid])->get();
+
+       //dd($catname);
        $pubname=Publisher::where(['publisher_id'=>$pubid])->get();
+
+       //dd($pubname);
 
 
 
@@ -228,6 +242,98 @@ class frontend extends Controller
    $indus=json_decode(json_encode($indusname),False);
        return view('targlo.contact',['indus'=> $indus,'catogery'=>$catogery,'publisher'=>$publisher]);
    }
+   public function requeststore(Request $request)
+   {
+    $catogery=Catogery::select('*')->get();
+
+
+    $publisher=Publisher::select('*')->get();
+    $industry=Admin::select('Meta_Title')->get()->toArray();
+    $find="Market Size, Share and Forecast";
+    $indusname=[];
+    for ($i=0; $i <count($industry) ; $i++) {
+        $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+    }
+   $indus=json_decode(json_encode($indusname),False);
+
+   $validator=Validator::make($request->all(),[
+       'first_name'=>'required',
+       'last_name'=>'required',
+       'email'=>'required|email',
+       'phone'=>'required',
+       'country'=>'required',
+       'company'=>'required',
+       'job_title'=>'required',
+       'message'=>'required',
+   ]);
+$message=[];
+   if($validator->fails())
+   {
+       $errors=json_decode(json_encode($validator->errors()));
+      /*  if($errors->first_name)
+       {
+          $message['first_name']=$errors->first_name[0];
+       }
+       if($errors->last_name[0])
+       {
+           $message['last_name']=$errors->last_name[0];
+       }
+       if($errors->email[0])
+       {
+          $message['email']=$errors->email[0];
+       }
+       if($errors->phone[0])
+       {
+           $message['phone']=$errors->phone[0];
+       }
+       if($errors->message[0])
+       {
+         $message['message']=$errors->message[0];
+       }
+       if($errors->country[0])
+       {
+          $message['country']=$errors->country[0];
+       }
+       if($errors->company[0])
+       {
+           $message['company']=$errors->company[0];
+       }
+       if($errors->job_title[0])
+       {
+         $message['job_title']=$errors->job_title[0];
+       } */
+         return response()->json(['errors'=>$errors]);
+         //return back()->withErrors(['errors'=>$message]);
+   }
+   else{
+       $client=new SimpleRequest();
+       $client->first_name=$request->first_name;
+       $client->last_name=$request->last_name;
+       $client->email=$request->email;
+       $client->phone=$request->phone;
+       $client->message=$request->message;
+       $client->country=$request->country;
+       $client->company=$request->company;
+       $client->job_title=$request->job_title;
+       $client->save();
+    $status=Mail::to('mailmelearnersociety665@gmail.com')
+    ->cc('mailmekumargautam766@gmail.com')
+    ->send(new Contactmail($client));
+   }
+
+
+       return view('targlo.contact',['indus'=> $indus,'catogery'=>$catogery,'publisher'=> $publisher]);
+   }
+   public function panel2()
+   {
+
+       return view('Admin.Panel');
+   }
+   public function sessy()
+   {
+
+       return view('Admin.sessydrop');
+   }
    public function contactstore(Request $request)
    {
     $catogery=Catogery::select('*')->get();
@@ -243,23 +349,26 @@ class frontend extends Controller
    $indus=json_decode(json_encode($indusname),False);
 
    $validator=Validator::make($request->all(),[
-       'firstname'=>'required',
-       'lastname'=>'required',
+       'first_name'=>'required',
+       'last_name'=>'required',
        'email'=>'required|email',
        'phone'=>'required',
+       'country'=>'required',
+       'company'=>'required',
+       'job_title'=>'required',
        'message'=>'required',
    ]);
 $message=[];
    if($validator->fails())
    {
        $errors=json_decode(json_encode($validator->errors()));
-       if($errors->firstname[0])
+       if($errors->first_name[0])
        {
-          $message['firstname']=$errors->firstname[0];
+          $message['first_name']=$errors->first_name[0];
        }
-       if($errors->lastname[0])
+       if($errors->last_name[0])
        {
-           $message['lastname']=$errors->lastname[0];
+           $message['last_name']=$errors->last_name[0];
        }
        if($errors->email[0])
        {
@@ -273,32 +382,37 @@ $message=[];
        {
          $message['message']=$errors->message[0];
        }
+       if($errors->country[0])
+       {
+          $message['country']=$errors->country[0];
+       }
+       if($errors->company[0])
+       {
+           $message['company']=$errors->company[0];
+       }
+       if($errors->job_title[0])
+       {
+         $message['job_title']=$errors->job_title[0];
+       }
          return response()->json(['errors'=>$errors]);
          //return back()->withErrors(['errors'=>$message]);
    }
    else{
-       $client=new Client();
-       $client->firstname=$request->firstname;
-       $client->lastname=$request->lastname;
+       $client=new Contactus();
+       $client->first_name=$request->first_name;
+       $client->last_name=$request->last_name;
        $client->email=$request->email;
        $client->phone=$request->phone;
        $client->message=$request->message;
+       $client->country=$request->country;
+       $client->company=$request->company;
+       $client->job_title=$request->job_title;
        $client->save();
     $status=Mail::to('mailmelearnersociety665@gmail.com')->send(new Contactmail($client));
    }
 
 
-       return view('targlo.contact',['indus'=> $indus]);
-   }
-   public function panel2()
-   {
-
-       return view('Admin.Panel');
-   }
-   public function sessy()
-   {
-
-       return view('Admin.sessydrop');
+       return view('targlo.contact',['indus'=> $indus,'catogery'=>$catogery,'publisher'=> $publisher]);
    }
    public function contact2()
    {

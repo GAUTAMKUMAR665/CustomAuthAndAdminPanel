@@ -181,6 +181,23 @@ https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
                   </div>
                 </li>
                 <li class="sidebar-dropdown">
+                    <a href="#">
+                      <i class="fa fa-chart-line"></i>
+                      <span>Simple Request</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                      <ul>
+                        <li>
+                          <a href="/api/view/simplerequest">VIEW</a>
+                        </li>
+                        <li>
+                          <a href="/api/add/simplerequest">ADD</a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </li>
+                <li class="sidebar-dropdown">
                   <a href="#">
                     <i class="fa fa-globe"></i>
                     <span>User</span>
@@ -191,7 +208,7 @@ https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
                         <a href="/api/view/user">VIEW</a>
                       </li>
                       <li>
-                        <a href="/api/add/user">ADD</a>
+                        <a href="{{route('Register')}}">ADD</a>
                       </li>
                     </ul>
                   </div>

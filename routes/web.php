@@ -51,3 +51,6 @@ Route::get('/toc/{toc}', [\App\Http\Controllers\Statics\frontend::class,'toc']);
 Route::view('/payment','targlo.payment');
 Route::view('/payment2','payment');
 Route::get('/reports',[\App\Http\Controllers\Statics\frontend::class,'reports']);
+
+Route::post('/simplerequest',[\App\Http\Controllers\Statics\frontend::class,'requeststore']);
+

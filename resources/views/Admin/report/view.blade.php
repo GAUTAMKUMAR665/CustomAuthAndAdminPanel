@@ -2,7 +2,7 @@
 
 @section('content')
 <form action="/api/postcsv" method="post" enctype="multipart/form-data" id="formid" style="position: fixed;left:920px;top:1px;">
-    <input type="file" name="csvfile" id="csvid" style="position:fixed;left:710px;">
+    <input type="file" name="csvfile" id="csvid" style="position:fixed;left:610px;">
     <button
     class="py-2 pl-5 pr-6 mr-3 flex items-center flex-shrink-0 bg-purple-600 rounded-lg text-white text-sm font-semibold hover:bg-purple-700 button"
   >

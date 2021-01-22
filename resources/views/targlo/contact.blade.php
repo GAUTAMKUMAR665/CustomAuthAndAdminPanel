@@ -24,13 +24,13 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input class="check-form" type="text" placeholder="First Name*:" name="firstname">
+									<input class="check-form" type="text" placeholder="First Name*:" name="first_name">
 									<span><i class="ti-check"></i></span>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input class="check-form" type="text" placeholder="Last Name*:" name="lastname">
+									<input class="check-form" type="text" placeholder="Last Name*:" name="last_name">
 									<span><i class="ti-check"></i></span>
 								</div>
 							</div>
@@ -45,7 +45,26 @@
 									<input class="check-form" type="text" placeholder="Phone Number*:" name="phone">
 									<span><i class="ti-check"></i></span>
 								</div>
+                            </div>
+                            <div class="col-md-6">
+								<div class="form-group">
+									<input class="check-form" type="text" placeholder="Company Name*:" name="company">
+									<span><i class="ti-check"></i></span>
+								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input class="check-form" type="text" placeholder="Job Title*:" name="job_title">
+									<span><i class="ti-check"></i></span>
+								</div>
+                            </div>
+                            <div class="col-md-6">
+								<div class="form-group">
+									<input class="check-form" type="text" placeholder="Country*:" name="country">
+									<span><i class="ti-check"></i></span>
+								</div>
+							</div>
+
 							<div class="col-md-12">
 								<div class="form-group">
 									<textarea placeholder="Tell us about your question!" name="message"></textarea>

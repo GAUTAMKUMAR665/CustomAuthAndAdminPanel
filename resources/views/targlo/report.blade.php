@@ -102,17 +102,17 @@
 
                         <div id="tab3" role="tabpanel" class="tab-pane panel-collapse collapse" aria-labelledby="heading3">
                           <p>This free Sample Report is purely a representation of our full report, for evaluating the market scope/data and make informed purchase decisions.</p>
-                          <form method="POST">
+                          <form method="POST" action="/simplerequest">
                             <div class="row row-space">
                                 <div class="col-12 col-sm-6">
                                     <div class="input-group">
-                                        <label class="label">first name</label>
+                                        <label class="label">First Name</label>
                                         <input class="input--style-4" type="text" name="first_name">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="input-group">
-                                        <label class="label">last name</label>
+                                        <label class="label">Last Name</label>
                                         <input class="input--style-4" type="text" name="last_name">
                                     </div>
                                 </div>
@@ -120,47 +120,52 @@
                             <div class="row row-space">
                                 <div class="col-12 col-sm-6">
                                     <div class="input-group">
-                                        <label class="label">Birthday</label>
-                                        <div class="input-group-icon">
-                                            <input class="input--style-4 js-datepicker" type="text" name="birthday">
-                                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                        </div>
+                                        <label class="label">Email</label>
+                                        <input class="input--style-4" type="text" name="email">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="input-group">
-                                        <label class="label">Gender</label>
-                                        <div class="p-t-10">
-                                            <label class="radio-container m-r-45">Male
-                                                <input type="radio" checked="checked" name="gender">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                            <label class="radio-container">Female
-                                                <input type="radio" name="gender">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
+                                        <label class="label">Job Title</label>
+                                        <input class="input--style-4" type="text" name="job_title">
                                     </div>
                                 </div>
                             </div>
                             <div class="row row-space">
                                 <div class="col-12 col-sm-6">
                                     <div class="input-group">
-                                        <label class="label">Email</label>
-                                        <input class="input--style-4" type="email" name="email">
+                                        <label class="label">Company</label>
+                                        <input class="input--style-4" type="text" name="company">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="input-group">
-                                        <label class="label">Phone Number</label>
-                                        <input class="input--style-4" type="text" name="phone">
+                                        <label class="label">Country</label>
+                                        <input class="input--style-4" type="text" name="country">
                                     </div>
                                 </div>
                             </div>
+                            <div class="row row-space">
+                                <div class="col-12 col-sm-6">
+                                    <div class="input-group">
+                                        <label class="label">Phone</label>
+                                        <input class="input--style-4" type="text" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="input-group">
+                                        <label class="label">Message</label>
+                                        <textarea class="textarea" rows="6" cols="50" type="text" name="message"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+
 
                             <div class="p-t-15">
-                                <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                                <button class="btn btn--radius-2 btn--blue" type="submit">Request Free Sample</button>
                             </div>
+                            @csrf
                         </form>
                         </div>
                         <div class="panel-heading" role="tab" id="heading4">
@@ -226,7 +231,7 @@
                           </div>
 
                           <div class="p-t-15">
-                              <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                              <button class="btn btn--radius-2 btn--blue" type="submit">Request Free Sample</button>
                           </div>
                       </form>
                       </div>

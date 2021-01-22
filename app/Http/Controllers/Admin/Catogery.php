@@ -82,7 +82,7 @@ class Catogery extends Controller
     {
         $validator=Validator::make($request->all(),[
             "catogery_id"=>"required|unique:catogeries,catogery_id",
-            "catogery_Catogery_Name"=>"required|unique:catogeries,catogery_Catogery_Name",
+            "catogery_name"=>"required|unique:catogeries,catogery_name",
             "catogery_slug"=>"required|unique:catogeries,catogery_slug",
               'created_at'=>'required',
               'updated_at'=>'required',
@@ -112,7 +112,7 @@ class Catogery extends Controller
     {
          $validator=Validator::make($request->all(),[
             "catogery_id"=>"required|unique:catogeries,catogery_id",
-            "catogery_Catogery_Name"=>"required|unique:catogeries,catogery_Catogery_Name",
+            "catogery_name"=>"required|unique:catogeries,catogery_name",
             "catogery_slug"=>"required|unique:catogeries,catogery_slug",
 
         ]);
@@ -126,7 +126,7 @@ class Catogery extends Controller
 
             $catogery=new Catogerylist();
             $catogery->catogery_id=$request->catogery_id;
-            $catogery->catogery_Catogery_Name=$request->catogery_Catogery_Name;
+            $catogery->catogery_name=$request->catogery_name;
             $catogery->catogery_slug=$request->catogery_slug;
             $catogery->save();
 
