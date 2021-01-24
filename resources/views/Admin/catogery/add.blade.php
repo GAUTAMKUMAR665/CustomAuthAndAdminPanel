@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ADD Catogery</title>
+    <title>ADD Catogery Form</title>
     {{-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> --}}
     <style href="{{ 'css/form.css' }}"></style>
 
@@ -15,6 +15,26 @@
 </head>
 <body>
     <main class="container">
+
+        @if ($errors->any())
+
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+
+        @endif
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li class="alert alert-success">{{Session::get('success')}}</li>
+                </ul>
+            </div>
+        @endif
         <header class="header text-center">
       <h2 id="title">ADD Catogery</h2>
 {{--
@@ -23,14 +43,14 @@
         <form id="survey-form" action="/api/add/catogery" method="POST">
           <div class="form-group">
           <label id="name-label" for="name">Catogery ID</label>
-          <input id="catogery_id"  class="form-control" type="text" name="catogery_id" placeholder="Catogery ID" required>
+          <input id="catogery_id"  class="form-control" type="text" name="catogery_id" placeholder="Catogery ID" >
           </div>
           <div class="form-group">
           <label id="catogery_name" for="catogery_name">Catogery Name</label>
-          <input id="catogery_name" class="form-control" type="text" name="catogery_name" placeholder="Catogery Name" required>
+          <input id="catogery_name" class="form-control" type="text" name="catogery_name" placeholder="Catogery Name" >
           <div class="form-group">
             <label id="slug" for="slug">Slug</label>
-            <input id="slug" class="form-control" type="text" name="catogery_slug" placeholder=" Catogery Slug" required>
+            <input id="slug" class="form-control" type="text" name="catogery_slug" placeholder=" Catogery Slug" >
           </div>
 
           <div class="form-group">

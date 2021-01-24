@@ -6,30 +6,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Report</title>
-<style>
-    input{
-        position: relative;
-        width:100%;
-        height: 30px;
-        border-radius: 15px;
-        outline: none;
-        border-color:#000080;
-    }
-    input[type='submit']{
-        width: 30%;
-        margin-top: 10px;
-        left:390px;
-    }
-</style>
+    <title>Update Press-Release Form</title>
 
 </head>
 <body>
     <main class="container">
-        <header class="header text-center">
-      <h1 id="title">Survey Form</h1>
 
-      <p id="description">Thank you for taking out a few minutes to fill out this form.</p>
+        @if ($errors->any())
+
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{$alert}}</li>
+                @endforeach
+            </ul>
+        </div>
+
+        @endif
+
+        @if (Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li class="alert alert-success">{{Session::get('success')}}</li>
+                </ul>
+            </div>
+        @endif
+        <header class="header text-center">
+      <h1 id="title">Update Press-Release</h1>
+
+     {{--  <p id="description">Thank you for taking out a few minutes to fill out this form.</p> --}}
         </header>
         <form id="survey-form">
           <div class="form-group">

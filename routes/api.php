@@ -23,20 +23,19 @@ Route::group(['middleware'=>'web'],function(){
     Route::post('verifyotp',[App\Http\Controllers\AuthenticationController::class,'verifyotp']);
     Route::any('verify',[App\Http\Controllers\AuthenticationController::class,'verification']);
     Route::get('verifyemail',[App\Http\Controllers\AuthenticationController::class,'verifyemail']);
-
+#######################################################################################################################
     Route::get('Login/view',[App\Http\Controllers\AuthenticationController::class,'loginView']);
     Route::post('Login',[App\Http\Controllers\AuthenticationController::class,'login']);
     Route::get('forget',[App\Http\Controllers\AuthenticationController::class,'forget']);
     Route::post('reset',[App\Http\Controllers\AuthenticationController::class,'passwordReset']);
-});
-
-
-
-Route::group(['middleware'=>'jwt.auth'],function(){
-    Route::post('GetUser',[App\Http\Controllers\AuthenticationController::class,'jwtdecode']);
-    Route::post('Logout',[App\Http\Controllers\AuthenticationController::class,'logout']);
-});
-
+###################################################################################################################
+Route::get('view/publiser',[\App\Http\Controllers\Admin\Publisher::class,'view']);
+Route::get('edit/publiser/{id}',[\App\Http\Controllers\Admin\Publisher::class,'editform'])->name('edit/publiser');
+Route::post('edit/publiser',[\App\Http\Controllers\Admin\Publisher::class,'edit']);
+Route::get('add/publiser',[\App\Http\Controllers\Admin\Publisher::class,'addform']);
+Route::post('add/publiser',[\App\Http\Controllers\Admin\Publisher::class,'add']);
+Route::post('delete/publiser',[\App\Http\Controllers\Admin\Publisher::class,'delete']);
+##############################################################################################
 ############################################################################################################################
 Route::get('getcsv',[App\Http\Controllers\AdminController::class,'export']);
 Route::post('postcsv',[App\Http\Controllers\AdminController::class,'importCSV']);
@@ -71,12 +70,12 @@ Route::post('add/pressrelease',[\App\Http\Controllers\Admin\PressRelese::class,'
 Route::post('delete/pressrelease',[\App\Http\Controllers\Admin\PressRelese::class,'delete']);
 
 #####################################################################################################################################
-Route::get('view/publiser',[\App\Http\Controllers\Admin\Publisher::class,'view']);
+/* Route::get('view/publiser',[\App\Http\Controllers\Admin\Publisher::class,'view']);
 Route::get('edit/publiser/{id}',[\App\Http\Controllers\Admin\Publisher::class,'editform'])->name('edit/publiser');
 Route::post('edit/publiser',[\App\Http\Controllers\Admin\Publisher::class,'edit']);
 Route::get('add/publiser',[\App\Http\Controllers\Admin\Publisher::class,'addform']);
 Route::post('add/publiser',[\App\Http\Controllers\Admin\Publisher::class,'add']);
-Route::post('delete/publiser',[\App\Http\Controllers\Admin\Publisher::class,'delete']);
+Route::post('delete/publiser',[\App\Http\Controllers\Admin\Publisher::class,'delete']); */
 
 ###############################################################################################################################################
 
@@ -115,6 +114,16 @@ Route::get('admin/otp',[\App\Http\Controllers\AdminauthController::class,'login'
 Route::get('admin/verifyotp',[\App\Http\Controllers\AdminauthController::class,'verify']);
 
 ##########################################################################################################################
+});
+
+
+
+Route::group(['middleware'=>'jwt.auth'],function(){
+    Route::post('GetUser',[App\Http\Controllers\AuthenticationController::class,'jwtdecode']);
+    Route::post('Logout',[App\Http\Controllers\AuthenticationController::class,'logout']);
+});
+
+
 
 
 

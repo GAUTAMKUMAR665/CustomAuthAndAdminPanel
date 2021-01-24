@@ -8,13 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-    <title>ADD Press Release</title>
+    <title>ADD Press-Release Form</title>
 
 </head>
 <body>
     <main class="container">
+        @if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li class="alert alert-danger">{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+
+
+@endif
+
+@if (Session::has('Success'))
+<div class="alert alert-success">
+    <ul>
+        <li class="alert alert-success">{{Session::get('success')}}</li>
+    </ul>
+</div>
+
+@endif
         <header class="header text-center">
-      <h1 id="title">Survey Form</h1>
+      <h1 id="title">Add press-Release </h1>
 
  {{--      <p id="description">Thank you for taking out a few minutes to fill out this form.</p> --}}
         </header>

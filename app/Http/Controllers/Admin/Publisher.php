@@ -49,7 +49,8 @@ class Publisher extends Controller
         if($validator->fails())
         {
             $errors=json_decode(json_encode($validator->errors()));
-            return response()->json(['status'=>0,'Message'=>$errors]);
+            //return response()->json(['status'=>0,'Message'=>$errors]);
+            return redirect()->back()->withErrors($errors);
         }
         else{
             $pub=new AdminPublisher();
@@ -59,8 +60,8 @@ class Publisher extends Controller
             $pub->phone=$request->phone;
             $pub->url=$request->url;
             $pub->save();
-
-            return response()->json(['status'=>0,'Message'=>'Publisher Added']);
+           return redirect()->back()->with("success","Publisher Updated");
+            //return response()->json(['status'=>0,'Message'=>'Publisher Added']);
         }
     }
 
@@ -82,7 +83,8 @@ class Publisher extends Controller
         if($validator->fails())
         {
             $errors=json_decode(json_encode($validator->errors()));
-            return response()->json(['status'=>0,'Message'=>$errors]);
+            //return response()->json(['errors'=>$errors]);
+            return redirect()->back()->withErrors($errors);
         }
         else{
             $pub=new AdminPublisher();
@@ -92,8 +94,8 @@ class Publisher extends Controller
             $pub->phone=$request->phone;
             $pub->url=$request->url;
             $pub->save();
-
-            return response()->json(['status'=>0,'Message'=>'Publisher Added']);
+            return redirect()->back()->with("success","Pulisher Added");
+            //return response()->json(['status'=>0,'Message'=>'Publisher Added']);
         }
 
     }

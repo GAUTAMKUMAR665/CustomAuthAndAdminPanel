@@ -14,30 +14,61 @@
 </head>
 <body>
     <main class="container">
+    {{--     @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif --}}
+       @if ($errors->any())
+            <div class="alert alert-danger">
+            <ul>
+    @foreach ($errors->all() as $error)
+        <li class="alert alert-danger">{{$error}}</li>
+    @endforeach
+            </ul>
+        </div>
+            @endif
+
+            @if (Session::has('success'))
+                <div class="alert alert-success">
+                    <ul>
+                        <li class="alert alert-success">{{Session::get('success')}}</li>
+                    </ul>
+                </div>
+            @endif
+
+
         <header class="header text-center">
       <h1 id="title">Survey Form</h1>
 
      {{--  <p id="description">Thank you for taking out a few minutes to fill out this form.</p> --}}
         </header>
-        <form id="survey-form">
-            <input type="hidden" value="{{ $publiser->id }}" name='id'>
+        <form id="survey-form" action="/api/edit/publiser" method="post" >
+            <div class="form-group">
+                <label id="name-label" for="PID">Publisher Id</label>
+                <input id="PID"  class="form-control" type="text" name="publisher_id" value="{{$publiser->id}}" >
+                </div>
           <div class="form-group">
           <label id="name-label" for="name">Name</label>
-          <input id="name"  class="form-control" type="text" name="name" value="{{$publiser->name}}" required>
+          <input id="name"  class="form-control" type="text" name="name" value="{{$publiser->name}}" >
           </div>
           <div class="form-group">
           <label id="email-label" for="email">Email</label>
-          <input id="email" class="form-control" type="email" name="email" value="{{$publiser->email}}" required>
+          <input id="email" class="form-control" type="email" name="email" value="{{$publiser->email}}" >
           </div>
           <div class="form-group">
             <label id="phone" for="phone">Phone</label>
-            <input id="phone" class="form-control" type="text" name="phone" value="{{$publiser->phone}}" required>
+            <input id="phone" class="form-control" type="text" name="phone" value="{{$publiser->phone}}" >
             </div>
-          <div class="form-group">
+            <div class="form-group">
+                <label id="name-label" for="URL">URL</label>
+                <input id="URL"  class="form-control" type="text" name="url" value="{{$publiser->URL}}" >
+                </div>
 
-          <textarea id="textarea"  name="message" value="{{$publiser->message}}"></textarea>
-            </div>
-          <div class="form-group">
 
           <button id="submit" type="submit">
             Submit</button>

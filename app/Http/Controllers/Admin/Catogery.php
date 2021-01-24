@@ -91,14 +91,14 @@ class Catogery extends Controller
         if($validator->fails())
         {
             $errors=json_decode(json_encode($validator->errors()));
-
-            return response()->json(['status'=>0,'Message'=>$validator->errors()]);
+              return redirect()->back()->withErrors($errors);
+            //return response()->json(['status'=>0,'Message'=>$validator->errors()]);
         }
         else{
 
             Catogerylist::where('id',$request->id)->update(['catogery_id'=>$request->catogery_id,'catogery_Catogery_Name'=>$request->catogery_Catogery_Name,'catogery_slug'=>$request->catogery_slug,'created_at'=>$request->created_at,'updated_at'=>$request->updated_at]);
-
-            return response()->json(['status'=>0,'Message'=>'Catogery Update sucessful']);
+            return redirect()->back()->with('success','Catogery Updated');
+            //return response()->json(['status'=>0,'Message'=>'Catogery Update sucessful']);
 
         }
     }
@@ -119,8 +119,8 @@ class Catogery extends Controller
         if($validator->fails())
         {
             $errors=json_decode(json_encode($validator->errors()));
-
-            return response()->json(['status'=>0,'Message'=>$errors]);
+            return redirect()->back()->withErrors($errors);
+            //return response()->json(['status'=>0,'Message'=>$errors]);
         }
         else{
 
