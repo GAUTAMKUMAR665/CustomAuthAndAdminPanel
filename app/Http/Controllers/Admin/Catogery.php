@@ -130,7 +130,9 @@ class Catogery extends Controller
             $catogery->catogery_slug=$request->catogery_slug;
             $catogery->save();
 
-            return response()->json(['status'=>1,'Message'=>'Report successfully Added']);
+            return redirect()->back()->with('success','Catogery Successfully Added');
+
+           // return response()->json(['status'=>1,'Message'=>'Report successfully Added']);
 
     }
 }
@@ -151,5 +153,9 @@ class Catogery extends Controller
             Catogerylist::where('id',$request->id)->delete();
         }
 
+    }
+    public function upload()
+    {
+        return view('Admin.Import/importcatogery');
     }
 }

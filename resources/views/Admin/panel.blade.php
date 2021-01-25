@@ -142,6 +142,9 @@ https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
                       <li>
                         <a href="/api/add/catogery">ADD</a>
                       </li>
+                      <li>
+                        <a href="/api/upload/catogery">Upload</a>
+                      </li>
 
                     </ul>
                   </div>
@@ -158,6 +161,9 @@ https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
                       </li>
                       <li>
                         <a href="/api/add/report">ADD</a>
+                      </li>
+                      <li>
+                        <a href="/api/upload/report">Upload</a>
                       </li>
 
                     </ul>

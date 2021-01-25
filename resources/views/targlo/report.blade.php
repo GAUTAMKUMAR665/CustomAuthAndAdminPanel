@@ -39,11 +39,11 @@
                     <span class="sr-only"></span>
                   </button>
                   <button type="button" class="btn btn-primary">
-                    Catogery_Name <span class="badge badge-light">{{ $catname[0]->catogery_name}}</span>
+                    Catogery_Name <span class="badge badge-light"> {{ $catname->catogery_name}} </span>
                     <span class="sr-only">unread messages</span>
                   </button>
                   <button type="button" class="btn btn-primary">
-                    Pulisher Name <span class="badge badge-light">{{$pubname[0]->name}}</span>
+                    Pulisher Name <span class="badge badge-light"> {{$pubname->name}} </span>
                     <span class="sr-only"></span>
                   </button>
 

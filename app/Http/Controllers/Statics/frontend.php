@@ -169,20 +169,26 @@ class frontend extends Controller
 
        $industry=Admin::select('Meta_Title')->get()->toArray();
 
-       $catid=Admin::where(['Meta_Title'=>$industry])->pluck('Category_Id');
+       $catid=Admin::where(['Meta_Title'=>$reportname])->pluck('Category_Id');
 
       // dd($catid);
-       $pubid=Admin::where(['Meta_Title'=>$industry])->pluck('Publisher_Id');
+       $pubid=Admin::where(['Meta_Title'=>$reportname])->pluck('Publisher_Id');
 
        //dd($pubid);
 
 
-       $catname=Catogery::where(['catogery_id'=>$catid])->get();
+       $catname=Catogery::where(['catogery_id'=>$catid])->first();
 
-       //dd($catname);
-       $pubname=Publisher::where(['publisher_id'=>$pubid])->get();
+       //$catnam=json_decode(json_encode($catname));
 
-       //dd($pubname);
+       //dd($catnam->catogery_name);
+       $pubname=Publisher::where(['publisher_id'=>$pubid])->first();
+
+       //$pubnam=json_decode(json_encode($pubname));
+
+       //dd($pubnam->name);
+
+       //dd($pubname[0]->name);
 
 
 
@@ -204,8 +210,8 @@ class frontend extends Controller
 
       // dd($report);
        //dd($catid);
-
-       return view('targlo.report',['report'=>$report,'indus'=> $indus,'catid'=>$catid,'catogery'=>$catogery,'publisher'=>$publisher,'catname'=>$catname,'pubname'=>$pubname]);
+       return view('targlo.report',compact('report','indus','catid','catogery','publisher','catname','pubname'));
+       //return view('targlo.report',['report'=>$report,'indus'=> $indus,'catid'=>$catid,'catogery'=>$catogery,'publisher'=>$publisher,'catname'=>$catname,'pubname'=>$pubname]);
    }
    public function reports()
    {

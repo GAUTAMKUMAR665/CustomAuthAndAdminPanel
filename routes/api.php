@@ -38,7 +38,8 @@ Route::post('delete/publiser',[\App\Http\Controllers\Admin\Publisher::class,'del
 ##############################################################################################
 ############################################################################################################################
 Route::get('getcsv',[App\Http\Controllers\AdminController::class,'export']);
-Route::post('postcsv',[App\Http\Controllers\AdminController::class,'importCSV']);
+Route::post('importreport',[App\Http\Controllers\AdminController::class,'reportCSV']);
+Route::post('importcatogery',[App\Http\Controllers\AdminController::class,'catogeryCSV']);
 Route::get('Adminhome',[App\Http\Controllers\AdminController::class,'home']);
 Route::post('Ajaxdata',[\App\Http\Controllers\AdminController::class,'ajaxdata']);
 Route::post('Editdata',[\App\Http\Controllers\AdminController::class,'edit']);
@@ -50,6 +51,7 @@ Route::get('edit/report/{id}',[\App\Http\Controllers\Admin\Report::class,'editfo
 Route::post('edit/report',[\App\Http\Controllers\Admin\Report::class,'edit']);
 Route::get('add/report',[\App\Http\Controllers\Admin\Report::class,'addform']);
 Route::post('add/reports',[\App\Http\Controllers\Admin\Report::class,'add']);
+Route::get('upload/report',[\App\Http\Controllers\Admin\Report::class,'upload']);
 Route::post('delete/report',[\App\Http\Controllers\Admin\Report::class,'delete']);
 
 #################################################################################################################################
@@ -59,6 +61,7 @@ Route::get('edit/catogery/{id}',[\App\Http\Controllers\Admin\Catogery::class,'ed
 Route::post('edit/catogery',[\App\Http\Controllers\Admin\Catogery::class,'edit']);
 Route::get('add/catogery',[\App\Http\Controllers\Admin\Catogery::class,'addform']);
 Route::post('add/catogery',[\App\Http\Controllers\Admin\Catogery::class,'add']);
+Route::get('upload/catogery',[\App\Http\Controllers\Admin\Catogery::class,'upload']);
 Route::post('delete/catogery',[\App\Http\Controllers\Admin\Catogery::class,'delete']);
 
 ##########################################################################################################################################

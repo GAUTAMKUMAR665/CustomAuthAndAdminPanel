@@ -28,6 +28,10 @@ class Simplerequest extends Mailable
      */
     public function build()
     {
-        return $this->markdown('Email.simplerequest');
+        return $this->markdown('Email.simplerequest')
+        ->attach('/path/to/file', [
+            'as' => 'name.pdf',
+            'mime' => 'application/pdf',
+        ]);
     }
 }

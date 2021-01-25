@@ -160,4 +160,9 @@ class Report extends Controller
 
 
   }
+
+  public function upload()
+  {
+      return view('Admin.Import.importreport');
+  }
 }

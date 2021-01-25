@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
    {{--  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> --}}
-    <title>UPLOAD Report </title>
+    <title>UPLOAD Catogery </title>
 
 </head>
 <body>
@@ -34,11 +34,11 @@
 @endif
 
         <header class="header text-center">
-      <h1 id="title">Upload REPORT</h1>
+      <h1 id="title">Upload CATOGERY</h1>
 
      {{--  <p id="description">Thank you for taking out a few minutes to fill out this form.</p> --}}
         </header>
-        <form id="survey-form"  action="/api/importreport" method="post" enctype="multipart/form-data">
+        <form id="survey-form"  action="/api/importcatogery" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <input class="form-file" type="file" name="csvfile" id="csvid">
                 </div>

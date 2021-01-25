@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Admin\Catogery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
@@ -75,7 +76,7 @@ public function delete(Request $request){
         //return $GLOBAL['tablename'];
         return $data;
     }
-    public function importCSV(Request $request)
+    public function reportCSV(Request $request)
     {
         $file=$request->csvfile;
         //dd($request);
@@ -127,9 +128,69 @@ public function delete(Request $request){
                 Admin::insert([$details[$i]]);
             }
 
-            return response()->json(['status'=>1,'Message'=>'Report Sucessfully Upload To Database']);
+              return  redirect()->back()->with('success','Report Sucessfully Upload To Database');
+            //return response()->json(['status'=>1,'Message'=>'Report Sucessfully Upload To Database']);
 
            // dd($GLOBALS['header']);
+        }
+    }
+    public function catogeryCSV(Request $request)
+    {
+        $file=$request->csvfile;
+        //dd($request);
+        $filename=$file->getClientOriginalName();
+
+        $extension=$file->getClientOriginalExtension();
+        ///dd($extension);
+        $tmppath=$file->getRealPath();
+        $filesize=$file->getsize();
+        $mimetpye=$file->getMImeType();
+
+        $valid_extension=array('csv');
+
+        if (in_array(strtolower($extension), $valid_extension)) {
+            $location='uploads/CSV';
+
+            $csvs=$file->move($location, $filename);
+            //dd($csvs);
+
+            $filepath=public_path($location."/".$filename);
+
+            //dd($filepath);
+            $column=[];
+            //array_push($column,$GLOBALS['colname']);
+            $details=$this->csvToArray($filepath);
+
+            //$nfilename=stripslashes($filepath);
+            //$find=array(".csv","_","D:","xampp","htdocs","gym","public","uploads","CSV",'/'," ","newfolder(2)","UsersgautamDesktoplaravelnewrepo3-","CUSTOMAUTHADMIN");
+            //$GLOBAL['tablename']=str_ireplace($find, "", $nfilename);
+
+            /* for ($i=0; $i <count($GLOBALS['header']); $i++) {
+             $find=array(" ");
+             $GLOBALS['header'][$i]=str_ireplace($find, "_", $GLOBALS['header'][$i]);
+            } */
+        /*     Schema::create($GLOBAL['tablename'], function (Blueprint $table) {
+                for ($i=0; $i <count($GLOBALS['header']) ; $i++) {
+                    array_push($GLOBALS['colname'], $GLOBALS['header'][$i]);
+                }
+                $table->bigIncrements('id');
+
+                for ($i=0; $i <count($GLOBALS['colname']) ; $i++) {
+                    $table->longText($GLOBALS['colname'][$i]);
+                }
+                $table->timestamps();
+            });
+ */
+///dd($details);
+            for ($i=0; $i <count($details) ; $i++) {
+                //DB::table($GLOBAL['tablename'])->insert([$details[$i]]);
+               Catogery::insert([$details[$i]]);
+            }
+
+
+            //return response()->json(['status'=>1,'Message'=>'Report Sucessfully Upload To Database']);
+
+            dd($GLOBALS['header']);
         }
     }
 
