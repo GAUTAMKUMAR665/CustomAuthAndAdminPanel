@@ -13,7 +13,24 @@
     <title>Login</title>
 </head>
 <body>
+
     <div class="overlay">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+
+        @endif
+
+        @if (Session::has('Message'))
+        <ul>
+            <li class="alert alert-primary">{{Session::get('Message')}}</li>
+        </ul>
+        @endif
         <!-- LOGN IN FORM by Omar Dsoky -->
         <form action="/api/Login" method="post">
            <!--   con = Container  for items in the form-->
@@ -35,7 +52,7 @@
                    <i class="fa fa-user-circle"></i>
                  </span>
                 <!--   user name Input-->
-                 <input class="form-input" id="txt-input" type="text" placeholder="Email" name="email" required>
+                 <input class="form-input" id="txt-input" type="text" placeholder="Email" name="email" >
 
               <br>
 
@@ -45,7 +62,7 @@
                 <i class="fa fa-key"></i>
                </span>
               <!--   Password Input-->
-              <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+              <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" >
 
         <!--      Show/hide password  -->
              <span>

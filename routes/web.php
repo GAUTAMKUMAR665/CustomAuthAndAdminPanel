@@ -31,7 +31,7 @@ Route::get('/token',function()
     return response()->json(csrf_token());
 });
 
-Route::get('/',[\App\Http\Controllers\Statics\frontend::class,'main']);
+Route::get('/',[\App\Http\Controllers\Statics\frontend::class,'index']);
 Route::get('/index',[\App\Http\Controllers\Statics\frontend::class,'index']);
 Route::get('/industry',[\App\Http\Controllers\Statics\frontend::class,'industry']);
 Route::post('/industry/search/',[\App\Http\Controllers\Statics\frontend::class,'industrysearch']);

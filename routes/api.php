@@ -28,6 +28,8 @@ Route::group(['middleware'=>'web'],function(){
     Route::post('Login',[App\Http\Controllers\AuthenticationController::class,'login']);
     Route::get('forget',[App\Http\Controllers\AuthenticationController::class,'forget']);
     Route::post('reset',[App\Http\Controllers\AuthenticationController::class,'passwordReset']);
+    Route::get('change/password',[App\Http\Controllers\AuthenticationController::class,'change']);
+    Route::post('reset/password',[App\Http\Controllers\AuthenticationController::class,'Reset']);
 ###################################################################################################################
 Route::get('view/publiser',[\App\Http\Controllers\Admin\Publisher::class,'view']);
 Route::get('edit/publiser/{id}',[\App\Http\Controllers\Admin\Publisher::class,'editform'])->name('edit/publiser');

@@ -3,7 +3,7 @@
 
 Please Click  Button to Reset your password
 
-@component('mail::button', ['url' => 'https://www.google.com'])
+@component('mail::button', ['url' => 'https://www.targlo.com/public/api/reset/password'])
  Reset your password
 @endcomponent
 

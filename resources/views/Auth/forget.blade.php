@@ -4,6 +4,15 @@
 </head>
 <body>
   <div class="container-center">
+      @if ($errors->any())
+      <div class="alert alert-danger">
+<ul>
+    @foreach ($errors->all() as $error)
+    <li class="alert alert-primary">{{$error}}</li>
+    @endforeach
+</ul>
+      </div>
+      @endif
     <center>
     <img src = "{{ asset('css\targlo\img\forgotpassword-300x251.png') }}" width="30%" class="fimg" >
       </center>

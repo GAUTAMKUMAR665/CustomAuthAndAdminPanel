@@ -22,11 +22,7 @@ use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Support\Str;
 
-
-
-
-
-
+use function PHPUnit\Framework\isEmpty;
 
 class AuthenticationController extends Controller
 {
@@ -123,6 +119,7 @@ return view('Auth.verify',['user'=>$user]);
 
                 $message['verification_method']=$errors->verification_method[0];
            }
+
            return response()->json(['Status'=>0,"Message"=>"Please Select A verification Method"]);
       }
       else{
@@ -193,53 +190,67 @@ else{
            {
              $message['password']=$errors->password[0];
            }
-
-           return response()->json(['status'=>0,'Message'=>$message,'Data'=>json_decode('{}')]);
+             return redirect()->back()->withErrors($errors);
+           //return response()->json(['status'=>0,'Message'=>$message,'Data'=>json_decode('{}')]);
        }
        else{
 
          $email=Authentication::select('*')->pluck('email');
-         foreach($email as $emails)
+         //dd($email);
+         if($email->isEmpty())
          {
-             if($emails==$request->email)
-             {
-                   $verify=Authentication::where('email',$request->email)->pluck('is_verified');
-         if($verify[0]==1)
-         {
-                 try {
-                     $token=JWTAuth::attempt($request->only('email','password'));
-
-                     $report=tap(Authentication::where('email',$request->email))->update(['_token'=>$token]);
-
-                     $industry=Admin::select('Meta_Title')->get()->toArray();
-                     $find="Market Size, Share and Forecast";
-                     $indusname=[];
-                     for ($i=0; $i <count($industry) ; $i++) {
-                         $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
-                     }
-                    $indus=json_decode(json_encode($indusname),False);
-
-                     return view('targlo.main',['token'=>$token,'indus'=>$indus]);
-                     //return redirect('/')->with(['token'=>$token]);
-
-                   // return response()->json(['status'=>1,'Message'=>'User Login Successsfully']);
-
-                 } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $e) {
-
-                    return response()->json(['status'=>0,'Message'=>"Unable To Generate Token!Your Credenticals is NOT Found"]);
-                     //throw $th;
-                 }
-
-            return response()->json(['status'=>1,'Message'=>'Email Found','data'=>$verify]);
+           return redirect()->back()->with('Message','Please Register You Are My First User');
+             //dd('please register you are my first user register');
          }
          else{
-             return response()->json(['status'=>0,'Message'=>"Your Account Is Not Verified!Please Verify Your Account",'data'=>json_decode('{}')]);
-         }
+            foreach($email as $emails)
+            {
+               //dd("in");
+                if($emails==$request->email)
+                {
+                  // dd("in");
+                      $verify=Authentication::where('email',$request->email)->pluck('is_verified');
+            if($verify[0]==1)
+            {
+                    try {
+                        $token=JWTAuth::attempt($request->only('email','password'));
 
-             }
-             else{
-                 return response()->json(['status'=>0,'Message'=>'Email Not Found!Please Register YourSelf First!']);
-             }
+                        $report=tap(Authentication::where('email',$request->email))->update(['_token'=>$token]);
+
+                        $industry=Admin::select('Meta_Title')->get()->toArray();
+                        $find="Market Size, Share and Forecast";
+                        $indusname=[];
+                        for ($i=0; $i <count($industry) ; $i++) {
+                            $indusname[$i]=str_ireplace($find,'!',$industry[$i]);
+                        }
+                       $indus=json_decode(json_encode($indusname),False);
+
+                        return view('targlo.index',['token'=>$token,'indus'=>$indus]);
+                        //return redirect('/')->with(['token'=>$token]);
+
+                      // return response()->json(['status'=>1,'Message'=>'User Login Successsfully']);
+
+                    } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $e) {
+
+                       return redirect()->back()->with('Message',"Unable To Generate Token!Your Credenticals is NOT Found");
+                      // return response()->json(['status'=>0,'Message'=>"Unable To Generate Token!Your Credenticals is NOT Found"]);
+                        //throw $th;
+                    }
+               return response()->json(['status'=>1,'Message'=>'Email Found','data'=>$verify]);
+            }
+            else{
+              // dd("out");
+                return redirect()->back()->with('Message',"Your Account Is Not Verified!Please Verify Your Account",);
+                //return response()->json(['status'=>0,'Message'=>"Your Account Is Not Verified!Please Verify Your Account",'data'=>json_decode('{}')]);
+            }
+                }
+                else{
+                   //dd("out");
+                    return redirect()->back()->with('Message','Email Not Found!Please Register YourSelf First!');
+                    //return response()->json(['status'=>0,'Message'=>'Email Not Found!Please Register YourSelf First!']);
+                }
+            }
+
          }
 
        }
@@ -255,16 +266,55 @@ else{
          if($validator->fails())
          {
              $errors=json_decode(json_encode($validator->errors()));
-             if(isset($errors->email))
-             {
-                return response()->json(['status'=>0,'message'=>json_decode($errors->email[0])]);
-             }
+
+             return redirect()->back()->withErrors($errors);
          }
          else{
 
             $status=Mail::to($request->email)->send(new SendMail);
+            //dd($status);
+            if($status==null)
+            {
+                return redirect()->back()->with("Message","Check Your Email and Follow link to Reset Your Password");
+            }
+            else{
+                return redirect()->back()->with("Message","Unable To Send Email");
+            }
 
-             return response()->json(['status'=>'1',"Message"=>"Check Your Email and Follow link to Reset Your Password"]);
+             //return response()->json(['status'=>'1',"Message"=>"Check Your Email and Follow link to Reset Your Password"]);
+         }
+
+   }
+   public function change()
+   {
+       return view('Auth.changepassword');
+   }
+   public function Reset(Request $request)
+   {
+       $message="";
+         $validator=Validator::make($request->all(),[
+             'password'=>'required',
+             'confirmpassword'=>'required'
+         ]);
+
+         if($validator->fails())
+         {
+             $errors=json_decode(json_encode($validator->errors()));
+
+             return redirect()->back()->withErrors($errors);
+         }
+         else{
+
+   $status=null;
+            if($status==null)
+            {
+                return redirect()->back()->with("Message","Check Your Email and Follow link to Reset Your Password");
+            }
+            else{
+                return redirect()->back()->with("Message","Unable To Send Email");
+            }
+
+             //return response()->json(['status'=>'1',"Message"=>"Check Your Email and Follow link to Reset Your Password"]);
          }
 
    }

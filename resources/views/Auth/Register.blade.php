@@ -7,9 +7,21 @@
     <title>Register</title>
     <style href="{{asset('css/register.css')}}" rel="stylesheet"></style>
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+
 </head>
 <body>
     <div class="container">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+
+        @endif
+
         <header>
             <h1>
                 <a href="#">
